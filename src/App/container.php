@@ -4,6 +4,7 @@
  * We rename or make a shortcut to the TodoController
  */
 use \App\Controllers\TodoController as TodoController;
+use \App\Controllers\UserController as UserController;
 
 require_once 'ConfigHandler.php';
 
@@ -72,6 +73,12 @@ $container['view'] = function ($container) {
 $container['todos'] = function ($c) {
     $todosController = new TodoController($c->get('db'));
     return $todosController;
+};
+
+
+$container['user'] = function($c) {
+  $userController = new UserController($c->get('db'));
+  return $userController;
 };
 
 return $container;
