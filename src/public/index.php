@@ -67,6 +67,8 @@ $app->post('/register', function($request, $response, $args){
  * This was done so that we can check if the user is authed when calling '/api'
  * but we don't have to check for auth when calling '/signin'
  */
+
+ //for users
 $app->group('/api', function () use ($app) {
 
   $app->get('/users', function($request, $response, $args) {
@@ -81,6 +83,39 @@ $app->group('/api', function () use ($app) {
     $allUsers = $this->user->getOne($args["userID"]);
     return $response->withJson($allUsers);
   });
+
+//for entries
+    $app->get('/entries', function($request, $response, $args) {
+      $allEntries = $this->user->getAll();
+      return $response->withJson($allEntries);
+    });
+    $app->get('/users/{amount}', function($request, $response, $args){
+      $allUsers = $this->user->getAll($args["amount"]);
+      return $response->withJson($allUsers);
+    });
+    $app->get('/entry/id/{entryID}', function($request, $response, $args){
+      $allUsers = $this->user->getOne($args["entryID"]);
+      return $response->withJson($allUsers);
+    });
+    $app->get('/entry/id/{entryID}', function($request, $response, $args){
+      $allUsers = $this->user->getOne($args["entryID"]);
+      return $response->withJson($allUsers);
+    });
+
+  //for comments
+    $app->get('/users', function($request, $response, $args) {
+      $allUsers = $this->user->getAll();
+      return $response->withJson($allUsers);
+    });
+    $app->get('/users/{amount}', function($request, $response, $args){
+      $allUsers = $this->user->getAll($args["amount"]);
+      return $response->withJson($allUsers);
+    });
+    $app->get('/users/id/{userID}', function($request, $response, $args){
+      $allUsers = $this->user->getOne($args["userID"]);
+      return $response->withJson($allUsers);
+    });
+
 
     // GET http://localhost:XXXX/api/todos
     $app->get('/todos', function ($request, $response, $args) {
