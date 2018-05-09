@@ -58,7 +58,6 @@ class UserController{
   }
 
   public function getAll($amount = null){
-
     $sql = "SELECT userID, username, createdAt FROM users";
 
     if($amount !== null && is_numeric($amount)){
@@ -66,11 +65,16 @@ class UserController{
     }
 
     $getAll = $this->db->prepare($sql);
-
     $getAll->execute();
+
     return $getAll->fetchAll();
   }
-  public function getOne(){
 
+  public function getOne($amount){
+    $getOne = $this->db->prepare("SELECT userID, username, createdAt FROM users WHERE userID = :userID");
+    $getOne->execute([
+      ":userID" => $amount
+    ]);
+    return $getOne->fetch();
   }
 }
