@@ -8,10 +8,11 @@ class UserController{
 
   public function __construct(\PDO $pdo)
   {
-      $this->db = $pdo;
+    $this->db = $pdo;
   }
 
   public function login($body, $response){
+
     $fetchUserStatement = $this->db->prepare('SELECT * FROM users WHERE username = :username');
     $fetchUserStatement->execute([
         ':username' => $body['username']
@@ -24,15 +25,42 @@ class UserController{
         return $response->withJson(['data' => [ $user['id'], $user['username'] ]]);
     }
     return $response->withJson(['error' => 'wrong password']);
-  }
-  public function logout(){
 
   }
-  public function register(){
+
+  public function logout($response){
+    session_destroy();
+    return $response->withJson('Success');
+  }
+
+  public function register($args){
+
+    $hashed = password_hash($args['password'], PASSWORD_DEFAULT);
+    $statement = $this->db->prepare(
+      "INSERT INTO users (username, password)
+      VALUES (:username, :password)"
+    );
+    $statement->execute([
+      ":username" => $args['username'],
+      ":password" => $hashed
+    ]);
+    die(var_dump($statement));
+    return "Success!";
 
   }
+
+  public function isLoggedIn(){
+    if( isset($_SESSION["loggedIn"]) ){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   public function getAll(){
-
+    $getAll = $this->db->prepare('SELECT userID, username, createdAt FROM users');
+    $getAll->execute();
+    return $getAll->fetchAll();
   }
   public function getOne(){
 
