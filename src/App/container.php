@@ -75,10 +75,19 @@ $container['todos'] = function ($c) {
     return $todosController;
 };
 
-
 $container['user'] = function($c) {
   $userController = new UserController($c->get('db'));
   return $userController;
+};
+
+$container['entires'] = function($c) {
+  $entryController = new EntryController($c->get('db'));
+  return $entryController;
+};
+
+$container['comments'] = function($c) {
+  $commentController = new CommentController($c->get('db'));
+  return $commentController;
 };
 
 return $container;
