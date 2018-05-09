@@ -11,7 +11,7 @@ class UserController{
     $this->db = $pdo;
   }
 
-  public function login($body, $response){
+  public function login($body){
 
     $fetchUserStatement = $this->db->prepare('SELECT * FROM users WHERE username = :username');
     $fetchUserStatement->execute([
@@ -21,16 +21,15 @@ class UserController{
 
     if (password_verify($body['password'], $user['password'])) {
         $_SESSION['loggedIn'] = true;
-        $_SESSION['userID'] = $user['id'];
-        return $response->withJson(['data' => [ $user['id'], $user['username'] ]]);
+        $_SESSION['userID'] = $user['userID'];
+        return ['data' => [ $user['userID'], $user['username'] ]];
     }
-    return $response->withJson(['error' => 'wrong password']);
-
+    return ['error' => 'wrong password'];
   }
 
-  public function logout($response){
+  public function logout(){
     session_destroy();
-    return $response->withJson('Success');
+    return "Success";
   }
 
   public function register($args){
@@ -44,9 +43,7 @@ class UserController{
       ":username" => $args['username'],
       ":password" => $hashed
     ]);
-    die(var_dump($statement));
     return "Success!";
-
   }
 
   public function isLoggedIn(){

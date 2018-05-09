@@ -44,12 +44,13 @@ $app->get('/login', function($request, $response, $args){
 });
 $app->post('/login', function ($request, $response, $args) {
   $body = $request->getParsedBody();
-  $res = $this->user->login($body, $response);
-  return $res;
+  $res = $this->user->login($body);
+  return $response->withJson($res);
 });
 
 $app->get('/logout', function ($request, $response, $args) {
-  return $this->user->logout($response);
+  $res = $this->user->logout();
+  return $response->withJson($res);
 });
 
 $app->get('/register', function($request, $response, $args){
@@ -112,17 +113,28 @@ $app->group('/api', function () use ($app) {
     });
 
   //for comments
-    $app->get('/users', function($request, $response, $args) {
-      $allUsers = $this->user->getAll();
-      return $response->withJson($allUsers);
+    $app->get('/comments', function($request, $response, $args) {
+      $allComments = $this->comment->getAll();
+      return $response->withJson($allComments);
     });
-    $app->get('/users/{amount}', function($request, $response, $args){
-      $allUsers = $this->user->getAll($args["amount"]);
-      return $response->withJson($allUsers);
+
+    $app->get('/comments/id/{commentID}', function($request, $response, $args){
+      $allComments = $this->comment->getOne($args["commentID"]);
+      return $response->withJson($allComments);
     });
-    $app->get('/users/id/{userID}', function($request, $response, $args){
-      $allUsers = $this->user->getOne($args["userID"]);
-      return $response->withJson($allUsers);
+    $app->get('/entries/{id}/comments', function($request, $response, $args){
+      $allComments = $this->comment->getOne($args["commentID"]);
+      return $response->withJson($allComments);
+    });
+
+    $app->post('/comments', function ($request, $response, $args) {
+        $body = $request->getParsedBody();
+        $newComment = $this->comment->add($body);
+        return $response->withJson(['data' => $newComment]);
+    });
+    $app->delete('/comments/id/{commentID}', function($request, $response, $args){
+      $allComments = $this->comment->deleteOne($args["commentID"]);
+      return $response->withJson($allComments);
     });
 
 
