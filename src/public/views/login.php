@@ -5,15 +5,15 @@
   require_once '../App/Controllers/UserController.php';
   // require_once '../App/ConfigHandler.php';
   // $db = ConfigHandler::getDefaultConfig();
-  $user = new UserController();
-  die(var_dump($user));
+  // $user = new UserController();
+  // die(var_dump($user));
 
-  if($user->isLoggedIn()){
-    echo "USER is logged in!";
-  } else {
-    echo "ISER is not logged in!";
-  }
-  
+  // if($user->isLoggedIn()){
+  //   echo "USER is logged in!";
+  // } else {
+  //   echo "ISER is not logged in!";
+  // }
+
 ?>
 
 

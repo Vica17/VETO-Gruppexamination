@@ -44,12 +44,13 @@ $app->get('/login', function($request, $response, $args){
 });
 $app->post('/login', function ($request, $response, $args) {
   $body = $request->getParsedBody();
-  $res = $this->user->login($body, $response);
-  return $res;
+  $res = $this->user->login($body);
+  return $response->withJson($res);
 });
 
 $app->get('/logout', function ($request, $response, $args) {
-  return $this->user->logout($response);
+  $res = $this->user->logout();
+  return $response->withJson($res);
 });
 
 $app->get('/register', function($request, $response, $args){
