@@ -80,12 +80,12 @@ $container['user'] = function($c) {
   return $userController;
 };
 
-$container['entires'] = function($c) {
+$container['entry'] = function($c) {
   $entryController = new EntryController($c->get('db'));
   return $entryController;
 };
 
-$container['comments'] = function($c) {
+$container['comment'] = function($c) {
   $commentController = new CommentController($c->get('db'));
   return $commentController;
 };
