@@ -19,9 +19,9 @@ class EntryController{
   }
 
   //get specific entry
-  public function getOne($id){
-    $getOne = $this->db->prepare('SELECT * FROM entries WHERE id = :id');
-    $getOne->execute([':id' => $id]);
+  public function getOne($entryID){
+    $getOne = $this->db->prepare('SELECT * FROM entries WHERE entryID = :entryID');
+    $getOne->execute([':entryID' => $entryID]);
     return $getOne->fetch();
   }
 
@@ -29,19 +29,16 @@ class EntryController{
   public function add($title, $entry, $createdBy){
     $date = date('Y-m-d H:i:s');
     $addOne = $this->db->prepare(
-        'INSERT INTO entries (title, content, createdBy) VALUES (:title, :content, :createdBy, :createdAt)'
+        'INSERT INTO entries (entryID, title, content, createdBy, createdAt) VALUES (:entryID, :title, :content, :createdBy, :createdAt)'
     );
-    $addOne->execute([':content'  => $entry['content']]);
-
-
-    return [
-      'id'          => (int)$this->db->lastInsertId(),
+    $addOne->execute([
+      'entryID'     => (int)$this->db->lastInsertId(),
       'title'       => $title,
-      'content'     => $entry['content'],
+      'content'     => $content,
       'createdBy'   => $createdBy,
       'createdAt'   => $date,
       'completed'   => false
-    ];
+    ]);
   }
 
   //Delete
@@ -54,6 +51,7 @@ class EntryController{
 
   //Edit post
   public function edit($entryID){
+    /*
     $addOne = $this->db->prepare(
         'INSERT INTO entries (title, content, createdBy) VALUES (:title, :content, :createdBy, :createdAt)'
     );
@@ -66,6 +64,6 @@ class EntryController{
       'createdBy'   => $createdBy,
       'createdAt'   => $date,
       'completed'   => false
-    ];
+    ]; */
   }
 }
