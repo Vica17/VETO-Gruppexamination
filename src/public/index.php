@@ -49,15 +49,15 @@ $app->post('/login', function ($request, $response, $args) {
 });
 
 $app->get('/logout', function ($request, $response, $args) {
-  session_destroy();
-  return $response->withJson('Success');
+  return $this->user->logout($response);
 });
 
 $app->get('/register', function($request, $response, $args){
   return $this->view->render($response, 'register.php');
 });
 $app->post('/register', function($request, $response, $args){
-
+  $body = $request->getParsedBody();
+  return $this->user->register($body);
 });
 
 
@@ -68,6 +68,11 @@ $app->post('/register', function($request, $response, $args){
  * but we don't have to check for auth when calling '/signin'
  */
 $app->group('/api', function () use ($app) {
+
+  $app->get('/users', function($request, $response, $args) {
+    $allUsers = $this->user->getAll();
+    return $response->withJson($allUsers);
+  });
 
     // GET http://localhost:XXXX/api/todos
     $app->get('/todos', function ($request, $response, $args) {

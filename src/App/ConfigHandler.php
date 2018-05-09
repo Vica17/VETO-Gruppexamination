@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class ConfigHandler
 {
@@ -32,7 +32,7 @@ class ConfigHandler
         $config['db']['host']   = 'localhost:8889';
         $config['db']['user']   = 'root';
         $config['db']['pass']   = 'root';
-        $config['db']['dbname'] = 'todos';
+        $config['db']['dbname'] = 'veto';
         return $config;
     }
 }
