@@ -57,8 +57,16 @@ class UserController{
     }
   }
 
-  public function getAll(){
-    $getAll = $this->db->prepare('SELECT userID, username, createdAt FROM users');
+  public function getAll($amount = null){
+
+    $sql = "SELECT userID, username, createdAt FROM users";
+
+    if($amount !== null && is_numeric($amount)){
+      $sql .= " LIMIT " . $amount;
+    }
+
+    $getAll = $this->db->prepare($sql);
+
     $getAll->execute();
     return $getAll->fetchAll();
   }

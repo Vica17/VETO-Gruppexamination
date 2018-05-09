@@ -73,6 +73,10 @@ $app->group('/api', function () use ($app) {
     $allUsers = $this->user->getAll();
     return $response->withJson($allUsers);
   });
+  $app->get('/users/{amount}', function($request, $response, $args){
+    $allUsers = $this->user->getAll($args["amount"]);
+    return $response->withJson($allUsers);
+  });
 
     // GET http://localhost:XXXX/api/todos
     $app->get('/todos', function ($request, $response, $args) {
