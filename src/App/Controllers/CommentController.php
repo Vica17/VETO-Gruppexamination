@@ -10,35 +10,48 @@ class CommentController{
   {
       $this->db = $pdo;
   }
-
+//get latest 20 comments
   public function getLatest(){
-    $getAll = $this->db->prepare('SELECT * FROM comments');
+    $getAll = $this->db->prepare("SELECT * FROM comments ORDER BY createdAt DESC LIMIT 20");
     $getAll->execute();
     return $getAll->fetchAll();
   }
 
-  public function add($comment){
+//post new comment
+//`comments`(`commentID`, `entryID`, `content`, `createdBy`, `createdAt`)
+
+  public function add($comment,$entryID,$createdBy){
+    $date = date('Y-m-d H:i:s');
     $addOne = $this->db->prepare(
-        'INSERT INTO comments (content) VALUES (:content)'
+        "INSERT INTO comments (commentID, content, entryID, createdBy, createdAt) VALUES (:commentID,:content,:entryID,:createdBy,:createdAt)"
     );
-    $addOne->execute([':content'  => $comment['content']]);
-    return [
-      'id'          => (int)$this->db->lastInsertId(),
-      'content'     => $comment['content'],
-      'completed'   => false
-    ];
+    $addOne->execute([
+      ':commentID'          => (int)$this->db->lastInsertId(),
+      ':entryID'     => $entryID,
+      ':content'    => $content,
+      ':createdBy'     => $createdBy,
+      ':createdAt' => $date
+    ]);
   }
-  public function getOne($id){
-    $getOne = $this->db->prepare('SELECT * FROM comments WHERE id = :id');
-    $getOne->execute([':id' => $id]);
+  //get specific comment
+  public function getOne($commentID){
+    $getOne = $this->db->prepare("SELECT * FROM comments WHERE commentID = :id");
+    $getOne->execute([':commentID' => $commentID]);
     return $getOne->fetch();
-
   }
-  public function remove(){
 
+  //remove comment
+  public function remove($commentID){
+    $statement=$db->prepare(
+      "DELETE FROM `comments` WHERE commentID='$commentID'"
+    );
+    $statement->execute();
   }
-  public function getAllConnectedEntires(){
-
+  //get all comments connected to entry
+  public function getAllConnectedEntires($entryID){
+    $getAll = $this->db->prepare("SELECT * FROM comments WHERE entryID=$entryID'");
+    $getAll->execute();
+    return $getAll->fetchAll();
   }
 
 }
