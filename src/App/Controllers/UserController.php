@@ -43,9 +43,7 @@ class UserController{
       ":username" => $args['username'],
       ":password" => $hashed
     ]);
-    die(var_dump($statement));
     return "Success!";
-
   }
 
   public function isLoggedIn(){
