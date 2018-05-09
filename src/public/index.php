@@ -104,17 +104,17 @@ $app->group('/api', function () use ($app) {
     });
 
   //for comments
-    $app->get('/users', function($request, $response, $args) {
-      $allUsers = $this->user->getAll();
-      return $response->withJson($allUsers);
+    $app->get('/comments', function($request, $response, $args) {
+      $allComments = $this->comment->getAll();
+      return $response->withJson($allComments);
     });
-    $app->get('/users/{amount}', function($request, $response, $args){
-      $allUsers = $this->user->getAll($args["amount"]);
-      return $response->withJson($allUsers);
+    $app->get('/comments/{amount}', function($request, $response, $args){
+      $allComments = $this->comment->getAll($args["amount"]);
+      return $response->withJson($allComments);
     });
-    $app->get('/users/id/{userID}', function($request, $response, $args){
-      $allUsers = $this->user->getOne($args["userID"]);
-      return $response->withJson($allUsers);
+    $app->get('/comments/id/{commentID}', function($request, $response, $args){
+      $allComments = $this->comment->getOne($args["commentID"]);
+      return $response->withJson($allComments);
     });
 
 
