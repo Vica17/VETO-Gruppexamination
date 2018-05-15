@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 04, 2018 at 08:52 AM
+-- Generation Time: May 15, 2018 at 11:39 AM
 -- Server version: 5.6.38
 -- PHP Version: 7.2.1
 
@@ -45,6 +45,17 @@ CREATE TABLE `entries` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `likes`
+--
+
+CREATE TABLE `likes` (
+  `entryID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -72,6 +83,12 @@ ALTER TABLE `entries`
   ADD PRIMARY KEY (`entryID`);
 
 --
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`entryID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -91,6 +108,12 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `entries`
 --
 ALTER TABLE `entries`
+  MODIFY `entryID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `likes`
+--
+ALTER TABLE `likes`
   MODIFY `entryID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
