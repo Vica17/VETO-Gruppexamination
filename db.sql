@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 15, 2018 at 01:48 PM
+-- Generation Time: May 15, 2018 at 02:47 PM
 -- Server version: 5.6.35
 -- PHP Version: 7.1.8
 
@@ -13,6 +13,45 @@ SET time_zone = "+00:00";
 --
 -- Database: `veto`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comments`
+--
+
+CREATE TABLE `comments` (
+  `commentID` int(11) NOT NULL,
+  `entryID` int(11) NOT NULL,
+  `content` varchar(250) NOT NULL,
+  `createdBy` int(11) NOT NULL,
+  `createdAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `entries`
+--
+
+CREATE TABLE `entries` (
+  `entryID` int(11) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `content` varchar(1000) NOT NULL,
+  `createdBy` int(11) NOT NULL,
+  `createdAt` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `likes`
+--
+
+CREATE TABLE `likes` (
+  `entryID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -41,6 +80,24 @@ INSERT INTO `users` (`userID`, `username`, `password`, `createdAt`, `isAdmin`) V
 --
 
 --
+-- Indexes for table `comments`
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`commentID`);
+
+--
+-- Indexes for table `entries`
+--
+ALTER TABLE `entries`
+  ADD PRIMARY KEY (`entryID`);
+
+--
+-- Indexes for table `likes`
+--
+ALTER TABLE `likes`
+  ADD PRIMARY KEY (`entryID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -50,6 +107,21 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `commentID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `entries`
+--
+ALTER TABLE `entries`
+  MODIFY `entryID` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `likes`
+--
+ALTER TABLE `likes`
+  MODIFY `entryID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
