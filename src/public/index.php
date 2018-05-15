@@ -21,6 +21,7 @@ require_once '../../vendor/autoload.php';
 $container = require '../App/container.php';
 $app = new \Slim\App($container);
 $auth = require '../App/auth.php';
+$isAdmin = require '../App/isAdmin.php';
 require '../App/cors.php';
 
 
@@ -45,12 +46,20 @@ $app->get('/login', function($request, $response, $args){
 $app->post('/login', function ($request, $response, $args) {
   $body = $request->getParsedBody();
   $res = $this->user->login($body);
-  return $response->withJson($res);
+
+  if($res == true){
+    return $response = $response->withRedirect('/');
+  } else {
+    return $response->withJson($res);
+  }
+
 });
 
 $app->get('/logout', function ($request, $response, $args) {
   $res = $this->user->logout();
-  return $response->withJson($res);
+  if($res == true){
+    return $response = $response->withRedirect('/');
+  }
 });
 
 $app->get('/register', function($request, $response, $args){
@@ -83,6 +92,10 @@ $app->group('/api', function () use ($app) {
   $app->get('/users/id/{userID}', function($request, $response, $args){
     $allUsers = $this->user->getOne($args["userID"]);
     return $response->withJson($allUsers);
+  });
+  // Data passed to template/ view via phpView  - just a test
+  $app->get('/users/username/{userName}', function($request, $response, $args){
+    return $this->view->render($response, 'test.php', $args);
   });
 
 //for entries
