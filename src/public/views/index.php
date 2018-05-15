@@ -39,6 +39,7 @@
   ?>
 
   <script src="scripts/main.js"></script>
+  <script src="scripts/api.js"></script>
 </body>
 
 </html>
