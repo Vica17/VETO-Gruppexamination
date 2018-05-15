@@ -93,6 +93,10 @@ $app->group('/api', function () use ($app) {
     $allUsers = $this->user->getOne($args["userID"]);
     return $response->withJson($allUsers);
   });
+  // Data passed to template/ view via phpView  - just a test
+  $app->get('/users/username/{userName}', function($request, $response, $args){
+    return $this->view->render($response, 'test.php', $args);
+  });
 
 //for entries
     //get last 20 entries
