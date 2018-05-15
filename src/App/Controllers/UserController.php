@@ -6,7 +6,7 @@ class UserController{
 
   private $db;
 
-  public function __construct(\PDO $pdo)
+  public function __construct(\PDO $pdo = null)
   {
     $this->db = $pdo;
   }
@@ -22,14 +22,19 @@ class UserController{
     if (password_verify($body['password'], $user['password'])) {
         $_SESSION['loggedIn'] = true;
         $_SESSION['userID'] = $user['userID'];
-        return ['data' => [ $user['userID'], $user['username'] ]];
+
+        if($user["isAdmin"] == true || $user["isAdmin"] == 1){
+          $_SESSION["isAdmin"] = true;
+        }
+
+        return true;
     }
     return ['error' => 'wrong password'];
   }
 
   public function logout(){
     session_destroy();
-    return "Success";
+    return true;
   }
 
   public function register($args){
@@ -46,14 +51,6 @@ class UserController{
     return "Success!";
   }
 
-  public function isLoggedIn(){
-    if( isset($_SESSION["loggedIn"]) ){
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   public function getAll($amount = null){
     $sql = "SELECT userID, username, createdAt FROM users";
 
@@ -67,11 +64,29 @@ class UserController{
     return $getAll->fetchAll();
   }
 
-  public function getOne($amount){
+  public function getOne($userID){
     $getOne = $this->db->prepare("SELECT userID, username, createdAt FROM users WHERE userID = :userID");
     $getOne->execute([
-      ":userID" => $amount
+      ":userID" => $userID
     ]);
     return $getOne->fetch();
+  }
+
+
+
+  public function isLoggedIn(){
+    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true ){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public function isAdmin(){
+    if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == true ){
+      return true;
+    } else {
+      return false;
+    }
   }
 }
