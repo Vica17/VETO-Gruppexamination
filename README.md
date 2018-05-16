@@ -82,6 +82,9 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 - [ ] `POST` Register function
 
 ### Views
+- index (Login/registrering och efter inloggning visa alla inlägg)
+- new - Skapa nytt inlägg
+- documentation - info om projektet
 #### Index
 
 Om inloggad
