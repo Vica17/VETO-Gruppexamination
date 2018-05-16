@@ -64,9 +64,9 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 - [ ] `PATCH` Updatera en comment (/api/comments)
 
 #### Users
-- [ ] `GET` hämta alla användare (/api/users)
-- [ ] `GET` hämta all info en en användare med ID (/api/users/id/{id})
-- [ ] `GET` hämta användare med användarnamn (/api/users/username/{username})
+- [x] `GET` hämta alla användare (/api/users)
+- [x] `GET` hämta all info en en användare med ID (/api/users/id/{id})
+- [x] `GET` hämta användare med användarnamn (/api/users/username/{username})
 
 #### Likes
 - [ ] `GET` hämta senaste 20 likes (/api/likes)
@@ -76,9 +76,9 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 - [ ] `POST` skapa en ny like (/api/likes)
 
 #### Other (outside /api)
-- [ ] `POST` Login function
-- [ ] `POST` Logout function
-- [ ] `POST` Register function
+- [x] `POST` Login function
+- [x] `POST` Logout function
+- [x] `POST` Register function
 
 ---
 
