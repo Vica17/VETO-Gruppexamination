@@ -14,5 +14,6 @@ $app->get('/users/id/{userID}', function($request, $response, $args){
 });
 // Data passed to template/ view via phpView  - just a test
 $app->get('/users/username/{userName}', function($request, $response, $args){
-  return $this->view->render($response, 'test.php', $args);
+  $allUsers = $this->user->getUsername($args["userName"]);
+  return $response->withJson($allUsers);
 });

@@ -52,7 +52,7 @@ class UserController{
   }
 
   public function getAll($amount = null){
-    $sql = "SELECT userID, username, createdAt FROM users";
+    $sql = "SELECT userID, username, createdAt, isAdmin FROM users";
 
     if($amount !== null && is_numeric($amount)){
       $sql .= " LIMIT " . $amount;
@@ -65,9 +65,17 @@ class UserController{
   }
 
   public function getOne($userID){
-    $getOne = $this->db->prepare("SELECT userID, username, createdAt FROM users WHERE userID = :userID");
+    $getOne = $this->db->prepare("SELECT userID, username, createdAt, isAdmin FROM users WHERE userID = :userID");
     $getOne->execute([
       ":userID" => $userID
+    ]);
+    return $getOne->fetch();
+  }
+  
+  public function getUsername($username){
+    $getOne = $this->db->prepare("SELECT userID, username, createdAt, isAdmin FROM users WHERE username = :username");
+    $getOne->execute([
+      ":username" => $username
     ]);
     return $getOne->fetch();
   }
