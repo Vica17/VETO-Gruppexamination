@@ -32,12 +32,10 @@ class EntryController{
         'INSERT INTO entries (entryID, title, content, createdBy, createdAt) VALUES (:entryID, :title, :content, :createdBy, :createdAt)'
     );
     $addOne->execute([
-      'entryID'     => (int)$this->db->lastInsertId(),
       'title'       => $title,
       'content'     => $content,
       'createdBy'   => $createdBy,
       'createdAt'   => $date,
-      'completed'   => false
     ]);
   }
 
@@ -51,19 +49,17 @@ class EntryController{
 
   //Edit post
   public function edit($entryID){
-    /*
-    $addOne = $this->db->prepare(
+
+    $update = $this->db->prepare(
         'INSERT INTO entries (title, content, createdBy) VALUES (:title, :content, :createdBy, :createdAt)'
     );
-    $addOne->execute([':content'  => $entry['content']]);
+    $update->execute([':content'  => $entry['content']]);
 
     return [
-      'id'          => (int)$this->db->lastInsertId(),
       'title'       => $title,
       'content'     => $entry['content'],
       'createdBy'   => $createdBy,
       'createdAt'   => $date,
-      'completed'   => false
-    ]; */
+    ];
   }
 }
