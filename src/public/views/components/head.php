@@ -1,27 +1,8 @@
 <?php
-  // require '../partials/session_start.php';
-  // require '../partials/_helpers.php';
 
-  if (session_status() == PHP_SESSION_NONE) {
-    session_set_cookie_params(3600);
-    session_start();
-  }
+  require dirname(__FILE__) . '/../partials/session_start.php';
+  require dirname(__FILE__) . '/../partials/_helpers.php';
 
-  function isLoggedIn(){
-    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true ){
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  function isAdmin(){
-    if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == true ){
-      return true;
-    } else {
-      return false;
-    }
-  }
 ?>
 
 <!DOCTYPE html>
