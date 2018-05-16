@@ -28,12 +28,14 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
   - createdBy - INT(11)
   - createAt - DATETIME
 
+
 - `comments`
  - commentID - INT (AI)(PK)
  - entryID - INT(11)
  - content - VARCHAR(250)
  - createdBy - INT(11)
  - createAt - DATETIME
+
 
 - `likes`
   - likeID - INT (AI)(PK)
