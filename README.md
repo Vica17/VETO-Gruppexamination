@@ -108,8 +108,4 @@ Om utloggad
 ---
 
 ### Other Ideas
-- Lägg till `.map` i `.gitignore`-filen
-- Dela upp routes i `index.php`-filen för att hjälpa till att få en bättre överblick i projectet.
-- Lägg till `isAdmin` och `isloggedIn` som partials i views som man kan använda de där istället.
 - Ta bort `isAdmin`/ `isLoggedIn` middleware from App (ingen användning?) eller gör om så att den länkar till en annan route ex. `/` (home) om man inte är admin eller inloggad?
-- Ta bort `isLoggedIn` & `isAdmin` från `UserController` (ingen användning?)
