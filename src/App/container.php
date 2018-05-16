@@ -5,6 +5,9 @@
  */
 use \App\Controllers\TodoController as TodoController;
 use \App\Controllers\UserController as UserController;
+use \App\Controllers\EntryController as EntryController;
+use \App\Controllers\CommentsController as CommentsController;
+use \App\Controllers\LikesController as LikesController;
 
 require_once 'ConfigHandler.php';
 
