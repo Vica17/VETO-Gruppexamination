@@ -68,16 +68,16 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 
 
 #### Likes
-- `GET` hämta senaste 20 likes (/api/likes)
-- `GET` hämta alla likes en användare har gjort (/api/likes/user/{id})
-- `GET` hämta alla likes kopplade till en entry (/api/likes/entry/{id})
-- `DELETE` ta bort en like (/api/likes)
-- `POST` skapa en ny like (/api/likes)
+- [ ] `GET` hämta senaste 20 likes (/api/likes)
+- [ ] `GET` hämta alla likes en användare har gjort (/api/likes/user/{id})
+- [ ] `GET` hämta alla likes kopplade till en entry (/api/likes/entry/{id})
+- [ ] `DELETE` ta bort en like (/api/likes)
+- [ ] `POST` skapa en ny like (/api/likes)
 
 #### Other (outside /api)
-- `POST` Login function
-- `POST` Logout function
-- `POST` Register function
+- [ ] `POST` Login function
+- [ ] `POST` Logout function
+- [ ] `POST` Register function
 
 ### Views
 - index (Login/registrering och efter inloggning visa alla inlägg)
