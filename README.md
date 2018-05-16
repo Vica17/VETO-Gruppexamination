@@ -30,11 +30,11 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 
 
 - `comments`
- - commentID - INT (AI)(PK)
- - entryID - INT(11)
- - content - VARCHAR(250)
- - createdBy - INT(11)
- - createAt - DATETIME
+  - commentID - INT (AI)(PK)
+  - entryID - INT(11)
+  - content - VARCHAR(250)
+  - createdBy - INT(11)
+  - createAt - DATETIME
 
 
 - `likes`
@@ -68,7 +68,6 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 - [ ] `GET` hämta all info en en användare med ID (/api/users/id/{id})
 - [ ] `GET` hämta användare med användarnamn (/api/users/username/{username})
 
-
 #### Likes
 - [ ] `GET` hämta senaste 20 likes (/api/likes)
 - [ ] `GET` hämta alla likes en användare har gjort (/api/likes/user/{id})
@@ -81,35 +80,14 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 - [ ] `POST` Logout function
 - [ ] `POST` Register function
 
+---
+
 ### Views
-- index (Login/registrering och efter inloggning visa alla inlägg)
-- new - Skapa nytt inlägg
-- documentation - info om projektet
-#### Index
-
-Om inloggad
-- Visa meny
-- Visa de senaste 20 entries
-
-Om utloggad
-- Visa login/ Register
-
-
-#### Profile
-Om inloggad
-- Visa menu
-- Visa users entries/ likes/ comments
-
-Om utloggad
-- Redirect to `index`?
-
-
+- [ ] index (Login/registrering och efter inloggning visa alla inlägg)
+- [ ] new - Skapa nytt inlägg
+- [ ] documentation - info om projektet
 
 ---
 
 ### Other Ideas
-- Lägg till `.map` i `.gitignore`-filen
-- Dela upp routes i `index.php`-filen för att hjälpa till att få en bättre överblick i projectet.
-- Lägg till `isAdmin` och `isloggedIn` som partials i views som man kan använda de där istället.
 - Ta bort `isAdmin`/ `isLoggedIn` middleware from App (ingen användning?) eller gör om så att den länkar till en annan route ex. `/` (home) om man inte är admin eller inloggad?
-- Ta bort `isLoggedIn` & `isAdmin` från `UserController` (ingen användning?)

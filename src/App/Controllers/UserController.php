@@ -72,21 +72,4 @@ class UserController{
     return $getOne->fetch();
   }
 
-
-
-  public function isLoggedIn(){
-    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true ){
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  public function isAdmin(){
-    if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == true ){
-      return true;
-    } else {
-      return false;
-    }
-  }
 }
