@@ -13,6 +13,10 @@
     }
   ?>
 
+  <div id="entries">
+
+  </div>
+
   <script src="scripts/main.js"></script>
   <script src="scripts/api.js"></script>
 
