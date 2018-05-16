@@ -4,20 +4,12 @@
 
   <?php
     if(isLoggedIn()){
-      echo "<p>Logged in!</p>";
-
-      if(isAdmin()){
-        echo "<p>You ARE an admin</p>";
-      } else {
-        echo "<p>You are NOT an admin</p>";
-      }
-
-    } else {
-      echo "<p>Is NOT logged in!</p>";
+      echo "YOU ARE LOGGED IN";
+      require 'components/logout_btn.php';
     }
-
-    if(isloggedIn() && isAdmin()){
-      echo "<p>LOGGED IN + ADMIN</p>";
+    else {
+      require 'components/login_form.php';
+      require 'components/register_form.php';
     }
   ?>
 

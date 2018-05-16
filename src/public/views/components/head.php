@@ -1,26 +1,28 @@
 <?php
+  // require '../partials/session_start.php';
+  // require '../partials/_helpers.php';
 
-session_start();
-
-function isLoggedIn(){
-  if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true ){
-    return true;
-  } else {
-    return false;
+  if (session_status() == PHP_SESSION_NONE) {
+    session_set_cookie_params(3600);
+    session_start();
   }
-}
 
-function isAdmin(){
-  if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == true ){
-    return true;
-  } else {
-    return false;
+  function isLoggedIn(){
+    if(isset($_SESSION["loggedIn"]) && $_SESSION["loggedIn"] == true ){
+      return true;
+    } else {
+      return false;
+    }
   }
-}
 
-
+  function isAdmin(){
+    if(isset($_SESSION["isAdmin"]) && $_SESSION["isAdmin"] == true ){
+      return true;
+    } else {
+      return false;
+    }
+  }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
