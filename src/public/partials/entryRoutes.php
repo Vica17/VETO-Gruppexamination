@@ -39,7 +39,14 @@ $allEntries = $this->entry->remove($args["entryID"]);
 });
 
 //edit post
-$app->patch('/entries/id/{entryID}', function($request, $response, $args){
-  $allEntries = $this->entry->edit($args["entryID"]);
+$app->patch('/entries/{entryID}', function($request, $response, $args){
+
+  $vars = $request->getParsedBody();
+
+  $allEntries = $this->entry->edit(
+    $vars["title"],
+    $vars["content"],
+    $vars["entryID"]
+  );
   return $response->withJson($allEntries);
 });
