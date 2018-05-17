@@ -82,7 +82,7 @@ $container['comment'] = function($c) {
   return $commentController;
 };
 
-$container['likes'] = function($c) {
+$container['like'] = function($c) {
   $likesController = new LikesController($c->get('db'));
   return $likesController;
 };

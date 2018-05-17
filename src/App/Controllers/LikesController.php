@@ -10,31 +10,52 @@ class LikesController{
       $this->db = $pdo;
   }
 
-  //For posting a like
-  public function add($entryID,$userID){
-    $date = date('Y-m-d H:i:s');
-    $addOne = $this->db->prepare(
-        "INSERT INTO likes (entryID,userID) VALUES (:entryID,:userID)"
-    );
-    $addOne->execute([
-      ':likeID'          => (int)$this->db->lastInsertId(),
-      ':userID'     => $userID,
-      ':entryID'     => $entryID
-    ]);
-  }
-
-  //For removing a like
-  public function remove($likeID){
-    $statement=$db->prepare(
-      "DELETE FROM `likes` WHERE likeID='$likeID'"
-    );
-    $statement->execute();
-  }
-//get all likes connected to entry
-  public function getAllLikesForEntry($entryID){
-    $getAll = $this->db->prepare("SELECT * FROM likes WHERE entryID='$entryID'");
+  public function getAll(){
+    $getAll = $this->db->prepare("SELECT * FROM likes");
     $getAll->execute();
     return $getAll->fetchAll();
   }
 
+  //For posting a like
+  public function add($entryID, $userID){
+
+    $addOne = $this->db->prepare(
+      "INSERT INTO likes (entryID, userID) VALUES (:entryID, :userID)"
+    );
+
+    $addOne->execute([
+      ':entryID'    => $entryID,
+      ':userID'     => $userID
+    ]);
+
   }
+
+  //For removing a like
+  public function remove($likeID){
+    $statement = $this->db->prepare(
+      "DELETE FROM likes WHERE likeID = :likeID"
+    );
+    $statement->execute([
+      ':likeID' => $likeID
+    ]);
+  }
+
+  //get all likes connected to entry
+  public function getAllLikesForEntry($entryID){
+    $getAll = $this->db->prepare("SELECT * FROM likes WHERE entryID = :entryID");
+    $getAll->execute([
+      ':entryID' => $entryID
+    ]);
+    return $getAll->fetchAll();
+  }
+
+  // get all entries connected to user
+  public function getAllLikesForUser($userID){
+    $getAll = $this->db->prepare("SELECT * FROM likes WHERE userID = :userID");
+    $getAll->execute([
+      ':userID' => $userID
+    ]);
+    return $getAll->fetchAll();
+  }
+
+}
