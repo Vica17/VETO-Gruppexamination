@@ -11,6 +11,13 @@ $app->get('/entries/{entryID}', function($request, $response, $args){
   return $response->withJson($allUsers);
 });
 
+//get all entries by a certain user
+$app->get('/entries/user/{userID}', function($request, $response, $args){
+  $allUsers = $this->entry->getOne($args["userID"]);
+  return $response->withJson($allUsers);
+});
+
+
 //post entry
 $app->post('/entries', function($request, $response, $args){
 
