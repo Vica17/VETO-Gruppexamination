@@ -10,47 +10,53 @@ class CommentController{
   {
       $this->db = $pdo;
   }
+
 //get latest 20 comments
-  public function getLatest(){
+  public function getAll(){
     $getAll = $this->db->prepare("SELECT * FROM comments ORDER BY createdAt DESC LIMIT 20");
     $getAll->execute();
     return $getAll->fetchAll();
   }
 
-//post new comment
-//`comments`(`commentID`, `entryID`, `content`, `createdBy`, `createdAt`)
-
-  public function add($comment,$entryID,$createdBy){
-    $date = date('Y-m-d H:i:s');
-    $addOne = $this->db->prepare(
-        "INSERT INTO comments (commentID, content, entryID, createdBy, createdAt) VALUES (:commentID,:content,:entryID,:createdBy,:createdAt)"
-    );
-    $addOne->execute([
-      ':commentID'          => (int)$this->db->lastInsertId(),
-      ':entryID'     => $entryID,
-      ':content'    => $content,
-      ':createdBy'     => $createdBy,
-      ':createdAt' => $date
-    ]);
-  }
-  //get specific comment
   public function getOne($commentID){
-    $getOne = $this->db->prepare("SELECT * FROM comments WHERE commentID = :id");
+    $getOne = $this->db->prepare("SELECT * FROM comments WHERE commentID = :commentID");
     $getOne->execute([':commentID' => $commentID]);
     return $getOne->fetch();
   }
 
+  public function add($entryID, $content, $createdBy){
+
+    date_default_timezone_set('Europe/Stockholm');
+    $date = date('Y-m-d H:i:s');
+
+    $addOne = $this->db->prepare(
+        "INSERT INTO comments (entryID, content, createdBy, createdAt) VALUES (:entryID, :content, :createdBy, :createdAt)"
+    );
+
+    $addOne->execute([
+      ':entryID'     => $entryID,
+      ':content'     => $content,
+      ':createdBy'   => $createdBy,
+      ':createdAt'   => $date
+    ]);
+  }
+
   //remove comment
   public function remove($commentID){
-    $statement=$db->prepare(
-      "DELETE FROM `comments` WHERE commentID='$commentID'"
+    $statement = $this->db->prepare(
+      "DELETE FROM comments WHERE commentID = :commentID"
     );
-    $statement->execute();
+    $statement->execute([
+      ':commentID' => $commentID
+    ]);
   }
+
   //get all comments connected to entry
-  public function getAllConnectedEntires($entryID){
-    $getAll = $this->db->prepare("SELECT * FROM comments WHERE entryID=$entryID'");
-    $getAll->execute();
+  public function getAllConnectedUsers($userID){
+    $getAll = $this->db->prepare("SELECT * FROM comments WHERE createdBy = :createdBy");
+    $getAll->execute([
+      ':createdBy' => $userID
+    ]);
     return $getAll->fetchAll();
   }
 
