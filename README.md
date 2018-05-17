@@ -58,10 +58,9 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 - [x] `GET` senaste 20 comments (/api/commments)
 - [x] `GET` specifik comment med ID (/api/comments/{id})
 - [x] `GET` alla comments en specifik user har skapat (/api/comments/user/{userID})
-- [x] `GET` alla comments på en entry (/api/comments/entry/{id})
+- [x] `GET` alla comments på en entry (/api/entries/{id}/comments)
 - [x] `POST` skapa en ny comment (/api/comments)
 - [x] `DELETE` ta bort en comment (/api/comments)
-- [ ] `PATCH` Updatera en comment (/api/comments)
 
 #### Users
 - [x] `GET` hämta alla användare (/api/users)
@@ -69,11 +68,11 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 - [x] `GET` hämta användare med användarnamn (/api/users/username/{username})
 
 #### Likes
-- [ ] `GET` hämta senaste 20 likes (/api/likes)
-- [ ] `GET` hämta alla likes en användare har gjort (/api/likes/user/{id})
-- [ ] `GET` hämta alla likes kopplade till en entry (/api/likes/entry/{id})
-- [ ] `DELETE` ta bort en like (/api/likes)
-- [ ] `POST` skapa en ny like (/api/likes)
+- [x] `GET` hämta alla likes (/api/likes)
+- [x] `GET` hämta alla likes en användare har gjort (/api/likes/user/{id})
+- [x] `GET` hämta alla likes kopplade till en entry (/api/entries/{id}/likes)
+- [x] `DELETE` ta bort en like (/api/likes)
+- [x] `POST` skapa en ny like (/api/likes)
 
 #### Other (outside /api)
 - [x] `POST` Login function
