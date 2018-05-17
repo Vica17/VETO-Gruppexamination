@@ -47,11 +47,11 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 ### Routes/ Controllers
 
 #### Entries
-- [ ] `GET` senaste 20 entries
-- [ ] `GET` specifik entry med ID (/api/entries/{id})
+- [x] `GET` senaste 20 entries
+- [x] `GET` specifik entry med ID (/api/entries/{id})
 - [ ] `GET` alla entries en user har skapat (/api/entries/user/{id})
-- [ ] `POST` skapa en ny entry (/api/entries)
-- [ ] `DELETE` ta bort en entry (/api/entries)
+- [x] `POST` skapa en ny entry (/api/entries)
+- [x] `DELETE` ta bort en entry (/api/entries)
 - [ ] `PATCH` Updatera en entry (/api/entries)
 
 #### Comments
