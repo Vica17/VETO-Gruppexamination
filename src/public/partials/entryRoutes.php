@@ -7,32 +7,39 @@ $app->get('/entries', function($request, $response, $args) {
 
 //get specific entry
 $app->get('/entries/{entryID}', function($request, $response, $args){
-  $allUsers = $this->entry->getOne($args["entryID"]);
-  return $response->withJson($allUsers);
+  $allEntries = $this->entry->getOne($args["entryID"]);
+  return $response->withJson($allEntries);
 });
+
+//get all entries by a certain user
+$app->get('/entries/user/{userID}', function($request, $response, $args){
+  $allEntries = $this->entry->getAllUsersEntries($args["userID"]);
+  return $response->withJson($allEntries);
+});
+
 
 //post entry
 $app->post('/entries', function($request, $response, $args){
 
   $vars = $request->getParsedBody();
 
-  $allUsers = $this->entry->add(
+  $allEntries = $this->entry->add(
     $vars["title"],
     $vars['content'],
     $vars['createdBy']
   );
 
-  return $response->withJson($allUsers);
+  return $response->withJson($allEntries);
 });
 
 //delete entry
 $app->delete('/entries/{entryID}', function($request, $response, $args){
-$allUsers = $this->entry->remove($args["entryID"]);
-  return $response->withJson($allUsers);
+$allEntries = $this->entry->remove($args["entryID"]);
+  return $response->withJson($allEntries);
 });
 
 //edit post
 $app->patch('/entries/id/{entryID}', function($request, $response, $args){
-  $allUsers = $this->entry->edit($args["entryID"]);
-  return $response->withJson($allUsers);
+  $allEntries = $this->entry->edit($args["entryID"]);
+  return $response->withJson($allEntries);
 });
