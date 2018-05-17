@@ -56,7 +56,7 @@ class EntryController{
   public function edit($entryID){
 
     $update = $this->db->prepare(
-        'INSERT INTO entries (title, content, createdBy) VALUES (:title, :content, :createdBy, :createdAt)'
+        'INSERT INTO entries (title, content) VALUES (:title, :content)'
     );
     $update->execute([':content'  => $entry['content']]);
 
@@ -64,7 +64,6 @@ class EntryController{
       'title'       => $title,
       'content'     => $entry['content'],
       'createdBy'   => $createdBy,
-      'createdAt'   => $date,
     ];
   }
 }
