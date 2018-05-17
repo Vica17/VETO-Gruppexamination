@@ -55,12 +55,12 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 - [ ] `PATCH` Updatera en entry (/api/entries)
 
 #### Comments
-- [ ] `GET` senaste 20 comments (/api/commments)
-- [ ] `GET` specifik comment med ID (/api/comments/{id})
-- [ ] `GET` alla comments en specifik user har skapat (/api/comments/user/{userID})
-- [ ] `GET` alla comments på en entry (/api/comments/entry/{id})
-- [ ] `POST` skapa en ny comment (/api/comments)
-- [ ] `DELETE` ta bort en comment (/api/comments)
+- [x] `GET` senaste 20 comments (/api/commments)
+- [x] `GET` specifik comment med ID (/api/comments/{id})
+- [x] `GET` alla comments en specifik user har skapat (/api/comments/user/{userID})
+- [x] `GET` alla comments på en entry (/api/comments/entry/{id})
+- [x] `POST` skapa en ny comment (/api/comments)
+- [x] `DELETE` ta bort en comment (/api/comments)
 - [ ] `PATCH` Updatera en comment (/api/comments)
 
 #### Users
