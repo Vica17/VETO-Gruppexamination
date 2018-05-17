@@ -7,16 +7,17 @@ class LikesController{
 
   public function __construct(\PDO $pdo)
   {
-      $this->db = $pdo;
+    $this->db = $pdo;
   }
 
+  // Get all Likes
   public function getAll(){
     $getAll = $this->db->prepare("SELECT * FROM likes");
     $getAll->execute();
     return $getAll->fetchAll();
   }
 
-  //For posting a like
+  // Post a new Like
   public function add($entryID, $userID){
 
     $addOne = $this->db->prepare(
@@ -30,7 +31,7 @@ class LikesController{
 
   }
 
-  //For removing a like
+  // Remove a Like
   public function remove($likeID){
     $statement = $this->db->prepare(
       "DELETE FROM likes WHERE likeID = :likeID"
@@ -40,7 +41,7 @@ class LikesController{
     ]);
   }
 
-  //get all likes connected to entry
+  // Get all likes for a entry
   public function getAllLikesForEntry($entryID){
     $getAll = $this->db->prepare("SELECT * FROM likes WHERE entryID = :entryID");
     $getAll->execute([
@@ -49,7 +50,7 @@ class LikesController{
     return $getAll->fetchAll();
   }
 
-  // get all entries connected to user
+  // get all likes for a user
   public function getAllLikesForUser($userID){
     $getAll = $this->db->prepare("SELECT * FROM likes WHERE userID = :userID");
     $getAll->execute([
