@@ -13,6 +13,20 @@
     }
   ?>
 
+
+
+  <form class="" action="/api/entries" method="POST">
+    <input type="text" name="title" value="THIS IS THE TIRLE">
+    <input type="text" name="content" value="CONTENT">
+    <input type="text" name="createdBy" value="1">
+    <input type="submit" value="submit">
+  </form>
+
+
+
+
+
+
   <script src="scripts/main.js"></script>
   <script src="scripts/api.js"></script>
 

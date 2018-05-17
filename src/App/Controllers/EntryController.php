@@ -26,10 +26,13 @@ class EntryController{
   }
 
   //Create new post
-  public function add($title, $entry, $createdBy){
+  public function add($title, $content, $createdBy){
+
+    date_default_timezone_set('Europe/Stockholm');
     $date = date('Y-m-d H:i:s');
+
     $addOne = $this->db->prepare(
-        'INSERT INTO entries (entryID, title, content, createdBy, createdAt) VALUES (:entryID, :title, :content, :createdBy, :createdAt)'
+        'INSERT INTO entries (title, content, createdBy, createdAt) VALUES (:title, :content, :createdBy, :createdAt)'
     );
     $addOne->execute([
       'title'       => $title,
@@ -41,10 +44,12 @@ class EntryController{
 
   //Delete
   public function remove($entryID){
-    $getOne = $this->db->prepare(
-      "DELETE * FROM entries WHERE entryID = '$entryID'"
+    $removeOne = $this->db->prepare(
+      "DELETE FROM entries WHERE entryID = :entryID"
     );
-    $statement->execute();
+    $removeOne->execute([
+      ":entryID" => $entryID
+    ]);
   }
 
   //Edit post
