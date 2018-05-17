@@ -64,14 +64,15 @@ class EntryController{
   }
 
   //Edit post
-  public function edit($entryID){
+  public function edit($title, $content, $entryID){
 
     $update = $this->db->prepare(
-        'UPDATE entries (title, content) VALUES (:title, :content) WHERE entryID = :entryID'
+        'UPDATE entries SET title = :title, content = :content WHERE entryID = :entryID'
     );
     $update->execute([
-      'title'       => $title,
-      'content'     => $entry['content'],
+      ':title'       => $title,
+      ':content'     => $content,
+      ':entryID'     => $entryID
     ]);
   }
 }
