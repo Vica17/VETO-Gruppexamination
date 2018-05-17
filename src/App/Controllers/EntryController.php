@@ -25,6 +25,17 @@ class EntryController{
     return $getOne->fetch();
   }
 
+
+  //get all entries from specific user
+  public function getAllUsersEntries($userID){
+    $getAll = $this->db->prepare("SELECT * FROM entries WHERE createdBy = :createdBy");
+    $getAll->execute([
+      ':createdBy' => $userID
+    ]);
+    return $getAll->fetchAll();
+    }
+
+
   //Create new post
   public function add($title, $content, $createdBy){
 
@@ -56,14 +67,11 @@ class EntryController{
   public function edit($entryID){
 
     $update = $this->db->prepare(
-        'INSERT INTO entries (title, content) VALUES (:title, :content)'
+        'UPDATE entries (title, content) VALUES (:title, :content) WHERE entryID = :entryID'
     );
-    $update->execute([':content'  => $entry['content']]);
-
-    return [
+    $update->execute([
       'title'       => $title,
       'content'     => $entry['content'],
-      'createdBy'   => $createdBy,
-    ];
+    ]);
   }
 }
