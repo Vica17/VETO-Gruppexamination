@@ -8,22 +8,24 @@ class CommentController{
 
   public function __construct(\PDO $pdo)
   {
-      $this->db = $pdo;
+    $this->db = $pdo;
   }
 
-//get latest 20 comments
+  //get latest 20 comments
   public function getAll(){
     $getAll = $this->db->prepare("SELECT * FROM comments ORDER BY createdAt DESC LIMIT 20");
     $getAll->execute();
     return $getAll->fetchAll();
   }
 
+  // get specific comment
   public function getOne($commentID){
     $getOne = $this->db->prepare("SELECT * FROM comments WHERE commentID = :commentID");
     $getOne->execute([':commentID' => $commentID]);
     return $getOne->fetch();
   }
 
+  // add new Comment
   public function add($entryID, $content, $createdBy){
 
     date_default_timezone_set('Europe/Stockholm');

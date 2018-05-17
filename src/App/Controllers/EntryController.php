@@ -8,25 +8,24 @@ class EntryController{
 
   public function __construct(\PDO $pdo)
   {
-      $this->db = $pdo;
+    $this->db = $pdo;
   }
 
-  //get latest 20 entries
+  // Get latest 20 entries
   public function getLatest(){
     $getAll = $this->db->prepare('SELECT * FROM entries ORDER BY createdAt DESC LIMIT 20');
     $getAll->execute();
     return $getAll->fetchAll();
   }
 
-  //get specific entry
+  // Get specific entry
   public function getOne($entryID){
     $getOne = $this->db->prepare('SELECT * FROM entries WHERE entryID = :entryID');
     $getOne->execute([':entryID' => $entryID]);
     return $getOne->fetch();
   }
 
-
-  //get all entries from specific user
+  // Get all entries from specific user
   public function getAllUsersEntries($userID){
     $getAll = $this->db->prepare("SELECT * FROM entries WHERE createdBy = :createdBy");
     $getAll->execute([
@@ -35,8 +34,7 @@ class EntryController{
     return $getAll->fetchAll();
     }
 
-
-  //Create new post
+  // Create new post
   public function add($title, $content, $createdBy){
 
     date_default_timezone_set('Europe/Stockholm');
@@ -53,7 +51,7 @@ class EntryController{
     ]);
   }
 
-  //Delete
+  // Delete
   public function remove($entryID){
     $removeOne = $this->db->prepare(
       "DELETE FROM entries WHERE entryID = :entryID"
@@ -63,7 +61,7 @@ class EntryController{
     ]);
   }
 
-  //Edit post
+  // Edit post
   public function edit($title, $content, $entryID){
 
     $update = $this->db->prepare(

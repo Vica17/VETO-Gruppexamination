@@ -11,6 +11,7 @@ class UserController{
     $this->db = $pdo;
   }
 
+  // Login User
   public function login($body){
 
     $fetchUserStatement = $this->db->prepare('SELECT * FROM users WHERE username = :username');
@@ -32,11 +33,13 @@ class UserController{
     return ['error' => 'wrong password'];
   }
 
+  // Logout User
   public function logout(){
     session_destroy();
     return true;
   }
 
+  // Register new user
   public function register($args){
 
     $hashed = password_hash($args['password'], PASSWORD_DEFAULT);
@@ -51,6 +54,7 @@ class UserController{
     return "Success!";
   }
 
+  // Get All users
   public function getAll($amount = null){
     $sql = "SELECT userID, username, createdAt, isAdmin FROM users";
 
@@ -64,6 +68,7 @@ class UserController{
     return $getAll->fetchAll();
   }
 
+  // Get Specific user by userID
   public function getOne($userID){
     $getOne = $this->db->prepare("SELECT userID, username, createdAt, isAdmin FROM users WHERE userID = :userID");
     $getOne->execute([
@@ -71,7 +76,8 @@ class UserController{
     ]);
     return $getOne->fetch();
   }
-  
+
+  // Get Specific User by Username
   public function getUsername($username){
     $getOne = $this->db->prepare("SELECT userID, username, createdAt, isAdmin FROM users WHERE username = :username");
     $getOne->execute([
