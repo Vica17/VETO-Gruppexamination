@@ -37,9 +37,6 @@ $app->get('/', function ($request, $response, $args) {
 
 
 // Login & Logout
-$app->get('/login', function($request, $response, $args){
-  return $this->view->render($response, 'login.php');
-});
 $app->post('/login', function ($request, $response, $args) {
   $body = $request->getParsedBody();
   $res = $this->user->login($body);
@@ -54,14 +51,9 @@ $app->post('/login', function ($request, $response, $args) {
 
 $app->get('/logout', function ($request, $response, $args) {
   $res = $this->user->logout();
-  if($res == true){
-    return $response = $response->withRedirect('/');
-  }
+  return $response = $response->withRedirect('/');
 });
 
-$app->get('/register', function($request, $response, $args){
-  return $this->view->render($response, 'register.php');
-});
 $app->post('/register', function($request, $response, $args){
   $body = $request->getParsedBody();
   return $this->user->register($body);

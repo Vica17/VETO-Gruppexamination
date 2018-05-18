@@ -58,7 +58,7 @@ $app->patch('/entries/{entryID}', function($request, $response, $args){
   $allEntries = $this->entry->edit(
     $vars["title"],
     $vars["content"],
-    $vars["entryID"]
+    $args["entryID"]
   );
   return $response->withJson($allEntries);
 });

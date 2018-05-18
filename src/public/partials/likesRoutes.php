@@ -14,6 +14,12 @@ $app->get('/likes', function ($request, $response, $args) {
   return $response->withJson(['data' => $newLike]);
 });
 
+// get specific like
+$app->get('/likes/{likeID}', function ($request, $response, $args) {
+  $newLike = $this->like->getOne($args["likeID"]);
+  return $response->withJson(['data' => $newLike]);
+});
+
 // alla likes användare har gjort
 $app->get('/users/{userID}/likes', function ($request, $response, $args) {
   $newLike = $this->like->getAllLikesForUser($args['userID']);
