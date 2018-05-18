@@ -1,4 +1,28 @@
-var api2 = (function (){
+
+async function getAllComments() {
+  let userComments = await api.fetchData("comments");
+  console.log(userComments);
+}
+async function getAllLikes() {
+  let userLikes = await api.fetchData("likes");
+  console.log(userLikes);
+}
+
+
+ async function deleteComment(id)
+{
+  let deleteOneComment = await api.fetchData("comments")+id;
+  console.log(deleteOneComment);
+}
+async function creteComments (res,name) {
+  
+}
+
+getAllComments();
+getAllLikes();
+deleteComment();
+
+/*var api2 = (function (){
 
   async function get(route) {
     return await fetch("api/" + route)
@@ -17,7 +41,9 @@ function getAllEntries(){
   fetch('api/entries')
     .then(res => res.json())
     .then(console.log);
-}
+}*/
+
+/*
 function postEntires(){
   const formData = new FormData();
   const entriesInput = document.getElementById('entriesInput');
@@ -34,4 +60,4 @@ fetch('api/entries',postOptions)
 .then((newEntry) => {
   document.body.insertAdjacentHTML('beforeend', newEntry.data.content);
 });
-}
+}*/
