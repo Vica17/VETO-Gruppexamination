@@ -56,6 +56,14 @@ const article = document.createElement("div");
 */
 
   }
-
+  async function getAllComments() {
+    let userComments = await api.fetchData("comments");
+    console.log(userComments);
+  }
+  async function getAllLikes() {
+    let userLikes = await api.fetchData("likes");
+    console.log(userLikes);
+  }
 getAllEntries();
-
+getAllComments();
+getAllLikes();
