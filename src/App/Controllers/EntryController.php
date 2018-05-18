@@ -27,6 +27,15 @@ class EntryController{
     return $getOne->fetch();
   }
 
+  // Get specific entry
+  public function getAllFromSearch($key){
+    $wild = "%".$key."%";
+    $getOne = $this->db->prepare('SELECT * FROM entries WHERE title LIKE :key');
+    $getOne->bindParam(':key', $wild);
+    $getOne->execute();
+    return $getOne->fetchAll();
+  }
+
   // Get all entries from specific user
   public function getAllUsersEntries($userID){
     $getAll = $this->db->prepare("SELECT * FROM entries WHERE createdBy = :createdBy");
@@ -56,7 +65,9 @@ class EntryController{
   // Delete
   public function remove($entryID){
     $removeOne = $this->db->prepare(
-      "DELETE FROM entries WHERE entryID = :entryID"
+      "DELETE FROM entries WHERE entryID = :entryID;
+       DELETE FROM likes WHERE entryID = :entryID;
+       DELETE FROM comments WHERE entryID = :entryID"
     );
     $removeOne->execute([
       ":entryID" => $entryID

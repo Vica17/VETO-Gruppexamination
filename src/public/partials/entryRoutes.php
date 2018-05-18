@@ -30,6 +30,11 @@ $app->get('/users/{userID}/entries', function($request, $response, $args){
   return $response->withJson($allEntries);
 });
 
+$app->get('/entries/search/{key}', function($request, $response, $args){
+  $allEntries = $this->entry->getAllFromSearch($args["key"]);
+  return $response->withJson($allEntries);
+});
+
 // post new entry
 $app->post('/entries', function($request, $response, $args){
   $vars = $request->getParsedBody();
