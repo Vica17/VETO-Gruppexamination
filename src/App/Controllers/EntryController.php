@@ -12,8 +12,10 @@ class EntryController{
   }
 
   // Get latest 20 entries
-  public function getLatest(){
-    $getAll = $this->db->prepare('SELECT * FROM entries ORDER BY createdAt DESC LIMIT 20');
+  public function getAll($limit = 20){
+    $getAll = $this->db->prepare('SELECT * FROM entries ORDER BY createdAt DESC LIMIT :myLimit');
+    $myLimit = (int)$limit;
+    $getAll->bindParam('myLimit', $myLimit, \PDO::PARAM_INT);
     $getAll->execute();
     return $getAll->fetchAll();
   }
