@@ -36,17 +36,6 @@ const api = ( function(){
 })();
 
 
-async function test() {
-  let userEntries = await api.fetchData("entries");
-  console.log(userEntries);
-}
-
-
-test();
-
-
-
-
 // IDEA
 // to fetch, post or delete data all you have to do is to use theses methods
 // Make sure the data you send to postData is JSON
