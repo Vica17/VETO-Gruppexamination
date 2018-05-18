@@ -11,15 +11,12 @@
     }
   ?>
 
+  <div id="entries" onload="getAllEntries()" class="entries">
 
-
-  <div id="entries" class="entries">
-    
   </div>
 
 
-
-  <script src="scripts/main.js"></script>
   <script src="scripts/api.js"></script>
+  <script src="scripts/main.js"></script>
 
 <?php require 'components/footer.php'; ?>
