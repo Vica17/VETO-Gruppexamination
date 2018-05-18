@@ -31,7 +31,7 @@ class UserController{
 
         return true;
     }
-    return ['error' => 'wrong password'];
+    return false;
   }
 
   // Logout User

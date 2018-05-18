@@ -11,19 +11,8 @@
     }
   ?>
 
+  <div id="entries" onload="getAllEntries()" class="entries">
 
-
-  <div id="entries" class="entries">
-
-  </div>
-
-  <div class="getItcomments">
-    <h2>Get comments</h2>
-    <p>Update,comment or delete</p>
-    <div class="addLimit">
-      <p>Add Limit</p>
-      <input type="number" id="limitInput"/>
-    </div>
   </div>
 
   <div class="button-wrapper">
