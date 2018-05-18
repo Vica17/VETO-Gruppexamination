@@ -7,8 +7,8 @@ $app->get('/likes', function ($request, $response, $args) {
 });
 
 // alla likes användare har gjort
-$app->get('/likes/user/{id}', function ($request, $response, $args) {
-  $newLike = $this->like->getAllLikesForUser($args['id']);
+$app->get('/users/{userID}/likes', function ($request, $response, $args) {
+  $newLike = $this->like->getAllLikesForUser($args['userID']);
   return $response->withJson(['data' => $newLike]);
 });
 

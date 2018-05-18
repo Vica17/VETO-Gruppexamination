@@ -54,23 +54,23 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 - [x] `DELETE` ta bort en entry (/api/entries)
 - [x] `PATCH` Updatera en entry (/api/entries)
 
+#### Users
+- [x] `GET` hämta alla användare (/api/users)
+- [x] `GET` hämta all info en en användare med ID (/api/users/{id})
+- [x] `GET` hämta användare med användarnamn (/api/users/username/{username})
+
 #### Comments
 - [x] `GET` senaste 20 comments (/api/commments)
 - [x] `GET` specifik comment med ID (/api/comments/{id})
-- [x] `GET` alla comments en specifik user har skapat (/api/comments/user/{userID})
-- [x] `GET` alla comments på en entry (/api/entries/{id}/comments)
+- [x] `GET` alla comments en specifik user har skapat (/api/users/{userID}/comments)
+- [x] `GET` alla comments på en entry (/api/entries/{entryID}/comments)
 - [x] `POST` skapa en ny comment (/api/comments)
 - [x] `DELETE` ta bort en comment (/api/comments)
 
-#### Users
-- [x] `GET` hämta alla användare (/api/users)
-- [x] `GET` hämta all info en en användare med ID (/api/users/id/{id})
-- [x] `GET` hämta användare med användarnamn (/api/users/username/{username})
-
 #### Likes
 - [x] `GET` hämta alla likes (/api/likes)
-- [x] `GET` hämta alla likes en användare har gjort (/api/likes/user/{id})
-- [x] `GET` hämta alla likes kopplade till en entry (/api/entries/{id}/likes)
+- [x] `GET` hämta alla likes en användare har gjort (/api/users/{userID}/likes)
+- [x] `GET` hämta alla likes kopplade till en entry (/api/entries/{entryID}/likes)
 - [x] `DELETE` ta bort en like (/api/likes)
 - [x] `POST` skapa en ny like (/api/likes)
 
