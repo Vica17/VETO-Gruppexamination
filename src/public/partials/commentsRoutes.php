@@ -14,12 +14,6 @@ $app->get('/comments', function($request, $response, $args) {
   return $response->withJson($allComments);
 });
 
-// get lastest 20 comments
-// $app->get('/comments', function($request, $response, $args) {
-//   $allComments = $this->comment->getAll();
-//   return $response->withJson($allComments);
-// });
-
 // get a specific comment
 $app->get('/comments/{commentID}', function($request, $response, $args){
   $allComments = $this->comment->getOne($args["commentID"]);
