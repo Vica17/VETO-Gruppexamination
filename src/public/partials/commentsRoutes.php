@@ -13,7 +13,7 @@ $app->get('/comments/{commentID}', function($request, $response, $args){
 });
 
 // get all comments connected tot a user
-$app->get('/user/{userID}/comments', function($request, $response, $args){
+$app->get('/users/{userID}/comments', function($request, $response, $args){
   $allEntries = $this->comment->getAllConnectedUsers($args["userID"]);
   return $response->withJson($allEntries);
 });
