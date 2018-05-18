@@ -56,7 +56,9 @@ class EntryController{
   // Delete
   public function remove($entryID){
     $removeOne = $this->db->prepare(
-      "DELETE FROM entries WHERE entryID = :entryID"
+      "DELETE FROM entries WHERE entryID = :entryID;
+       DELETE FROM likes WHERE entryID = :entryID;
+       DELETE FROM comments WHERE entryID = :entryID"
     );
     $removeOne->execute([
       ":entryID" => $entryID
