@@ -20,6 +20,15 @@ class LikesController{
     return $getAll->fetchAll();
   }
 
+  // Get specific like
+  public function getOne($likeID){
+    $getAll = $this->db->prepare("SELECT * FROM likes WHERE likeID = :likeID");
+    $getAll->execute([
+      ':likeID' => $likeID
+    ]);
+    return $getAll->fetchAll();
+  }
+
   // Post a new Like
   public function add($entryID, $userID){
 
