@@ -56,16 +56,11 @@ class UserController{
   }
 
   // Get All users
-  public function getAll($amount = null){
-    $sql = "SELECT userID, username, createdAt, isAdmin FROM users";
-
-    if($amount !== null && is_numeric($amount)){
-      $sql .= " LIMIT " . $amount;
-    }
-
-    $getAll = $this->db->prepare($sql);
+  public function getAll($limit = 20){
+    $getAll = $this->db->prepare("SELECT userID, username, createdAt, isAdmin FROM users LIMIT :myLimit");
+    $myLimit = (int)$limit;
+    $getAll->bindParam('myLimit', $myLimit, \PDO::PARAM_INT);
     $getAll->execute();
-
     return $getAll->fetchAll();
   }
 

@@ -2,7 +2,15 @@
 
 // get all entries
 $app->get('/entries', function($request, $response, $args) {
-  $allEntries = $this->entry->getLatest();
+  $query = $request->getQueryParams();
+
+  if(isset($query['limit'])){
+    $limit = $query['limit'];
+  } else {
+    $limit = 20;
+  }
+
+  $allEntries = $this->entry->getAll($limit);
   return $response->withJson($allEntries);
 });
 

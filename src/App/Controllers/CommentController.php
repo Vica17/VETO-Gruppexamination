@@ -12,8 +12,10 @@ class CommentController{
   }
 
   //get latest 20 comments
-  public function getAll(){
-    $getAll = $this->db->prepare("SELECT * FROM comments ORDER BY createdAt DESC LIMIT 20");
+  public function getAll($limit = 20){
+    $getAll = $this->db->prepare("SELECT * FROM comments ORDER BY createdAt DESC LIMIT :myLimit");
+    $myLimit = (int)$limit;
+    $getAll->bindParam('myLimit', $myLimit, \PDO::PARAM_INT);
     $getAll->execute();
     return $getAll->fetchAll();
   }
