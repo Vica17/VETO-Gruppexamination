@@ -1,4 +1,5 @@
 
+
 //Print out or entries
 async function getAllEntries() {
   let entry = await api.fetchData("entries")
@@ -57,3 +58,4 @@ const article = document.createElement("div");
   }
 
 getAllEntries();
+
