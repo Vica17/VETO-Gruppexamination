@@ -11,8 +11,11 @@ class LikesController{
   }
 
   // Get all Likes
-  public function getAll(){
-    $getAll = $this->db->prepare("SELECT * FROM likes");
+  public function getAll($limit = 20){
+    $getAll = $this->db->prepare("SELECT * FROM likes LIMIT :myLimit");
+    $myLimit = (int)$limit;
+    $getAll->bindParam('myLimit', $myLimit, \PDO::PARAM_INT);
+    $getAll->execute();
     $getAll->execute();
     return $getAll->fetchAll();
   }

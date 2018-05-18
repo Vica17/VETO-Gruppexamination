@@ -1,10 +1,24 @@
 <?php
 
-// get lastest 20 comments
+// get lastest 20 comments with a set limit
 $app->get('/comments', function($request, $response, $args) {
-  $allComments = $this->comment->getAll();
+  $query = $request->getQueryParams();
+
+  if(isset($query['limit'])){
+    $limit = $query['limit'];
+  } else {
+    $limit = 20;
+  }
+
+  $allComments = $this->comment->getAll($limit);
   return $response->withJson($allComments);
 });
+
+// get lastest 20 comments
+// $app->get('/comments', function($request, $response, $args) {
+//   $allComments = $this->comment->getAll();
+//   return $response->withJson($allComments);
+// });
 
 // get a specific comment
 $app->get('/comments/{commentID}', function($request, $response, $args){

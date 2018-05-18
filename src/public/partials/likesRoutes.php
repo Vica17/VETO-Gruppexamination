@@ -2,7 +2,15 @@
 
 // get all Likes
 $app->get('/likes', function ($request, $response, $args) {
-  $newLike = $this->like->getAll();
+  $query = $request->getQueryParams();
+
+  if(isset($query['limit'])){
+    $limit = $query['limit'];
+  } else {
+    $limit = 20;
+  }
+
+  $newLike = $this->like->getAll($limit);
   return $response->withJson(['data' => $newLike]);
 });
 

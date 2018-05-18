@@ -2,7 +2,15 @@
 
 // get all users
 $app->get('/users', function($request, $response, $args) {
-  $allUsers = $this->user->getAll();
+  $query = $request->getQueryParams();
+
+  if(isset($query['limit'])){
+    $limit = $query['limit'];
+  } else {
+    $limit = 20;
+  }
+
+  $allUsers = $this->user->getAll($limit);
   return $response->withJson($allUsers);
 });
 
