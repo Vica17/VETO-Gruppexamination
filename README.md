@@ -50,6 +50,7 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 - [x] `GET` senaste 20 entries (/api/entries)
 - [x] `GET` specifik entry med ID (/api/entries/{id})
 - [x] `GET` alla entries en user har skapat (/api/entries/user/{id})
+- [x] `GET` söka efter title (api/entries/search/{key})
 - [x] `POST` skapa en ny entry (/api/entries)
 - [x] `DELETE` ta bort en entry (/api/entries)
 - [x] `PATCH` Updatera en entry (/api/entries)
