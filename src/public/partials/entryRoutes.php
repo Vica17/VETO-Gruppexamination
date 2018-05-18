@@ -17,6 +17,10 @@ $app->get('/entries/user/{userID}', function($request, $response, $args){
   $allEntries = $this->entry->getAllUsersEntries($args["userID"]);
   return $response->withJson($allEntries);
 });
+$app->get('/users/{userID}/entries', function($request, $response, $args){
+  $allEntries = $this->entry->getAllUsersEntries($args["userID"]);
+  return $response->withJson($allEntries);
+});
 
 // post new entry
 $app->post('/entries', function($request, $response, $args){
