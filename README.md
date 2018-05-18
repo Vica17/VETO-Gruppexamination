@@ -56,7 +56,7 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 
 #### Users
 - [x] `GET` hämta alla användare (/api/users)
-- [x] `GET` hämta all info en en användare med ID (/api/users/id/{id})
+- [x] `GET` hämta all info en en användare med ID (/api/users/{id})
 - [x] `GET` hämta användare med användarnamn (/api/users/username/{username})
 
 #### Comments

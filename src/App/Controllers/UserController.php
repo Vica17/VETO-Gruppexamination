@@ -23,6 +23,7 @@ class UserController{
     if (password_verify($body['password'], $user['password'])) {
         $_SESSION['loggedIn'] = true;
         $_SESSION['userID'] = $user['userID'];
+        $_SESSION['username'] = $user['username'];
 
         if($user["isAdmin"] == true || $user["isAdmin"] == 1){
           $_SESSION["isAdmin"] = true;

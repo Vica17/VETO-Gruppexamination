@@ -1,4 +1,4 @@
-var api = (function (){
+var api2 = (function (){
 
   async function get(route) {
     return await fetch("api/" + route)
