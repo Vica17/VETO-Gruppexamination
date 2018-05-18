@@ -25,11 +25,14 @@ $app->get('/entries/user/{userID}', function($request, $response, $args){
   $allEntries = $this->entry->getAllUsersEntries($args["userID"]);
   return $response->withJson($allEntries);
 });
+
+// also gets all entries by certain user
 $app->get('/users/{userID}/entries', function($request, $response, $args){
   $allEntries = $this->entry->getAllUsersEntries($args["userID"]);
   return $response->withJson($allEntries);
 });
 
+// search on entry title
 $app->get('/entries/search/{key}', function($request, $response, $args){
   $allEntries = $this->entry->getAllFromSearch($args["key"]);
   return $response->withJson($allEntries);

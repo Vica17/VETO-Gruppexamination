@@ -35,7 +35,7 @@ $app->get('/entries/{entryID}/likes', function($request, $response, $args){
 //post new like
 $app->post('/likes', function ($request, $response, $args) {
   $body = $request->getParsedBody();
-  $newLike = $this->like->add($body['entryID'], $body['userID']);
+  $newLike = $this->like->add($body['entryID'], $_SESSION['userID']);
   return $response->withJson(['data' => $newLike]);
 });
 
