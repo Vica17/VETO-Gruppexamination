@@ -34,7 +34,7 @@ class EntryController{
     return $getOne->fetch();
   }
 
-  // Get specific entry
+  // Get entries from search of title
   public function getAllFromSearch($key){
     $wild = "%".$key."%";
     $getOne = $this->db->prepare('SELECT * FROM entries WHERE title LIKE :key');
@@ -69,7 +69,7 @@ class EntryController{
     ]);
   }
 
-  // Delete
+  // Delete post
   public function remove($entryID){
     $removeOne = $this->db->prepare(
       "DELETE FROM entries WHERE entryID = :entryID;
