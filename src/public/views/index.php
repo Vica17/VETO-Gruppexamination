@@ -14,12 +14,14 @@
   <div id="entries" onload="getAllEntries()" class="entries">
 
   </div>
+  <div id="comments" class="comments">
 
-  <div class="button-wrapper">
+  </div>
+  <div class="button-wrap">
     <button onclick="getAllComments()" id="getComments">Get All Comments</button>
     <button onclick="getAllLikes()" id="getLikes">Get All Likes</button>
   </div>
-  
+
 
 
   <script src="scripts/api.js"></script>
