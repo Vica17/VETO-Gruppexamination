@@ -14,12 +14,12 @@ class EntryController{
   // Get latest 20 entries
   public function getAll($limit = 20){
     $getAll = $this->db->prepare('
-    SELECT e.entryID, e.title, e.content, e.createdAt, u.username, u.isAdmin, u.userID
-    FROM entries AS e
-    INNER JOIN users AS u
-    GROUP BY entryID
-    ORDER BY e.createdAt
-    DESC LIMIT :myLimit');
+      SELECT e.entryID, e.title, e.content, e.createdAt, u.username, u.isAdmin, u.userID
+      FROM entries AS e
+      INNER JOIN users AS u
+      GROUP BY entryID
+      ORDER BY e.createdAt
+      DESC LIMIT :myLimit');
 
     $myLimit = (int)$limit;
     $getAll->bindParam('myLimit', $myLimit, \PDO::PARAM_INT);
@@ -45,7 +45,13 @@ class EntryController{
 
   // Get all entries from specific user
   public function getAllUsersEntries($userID){
-    $getAll = $this->db->prepare("SELECT * FROM entries WHERE createdBy = :createdBy");
+    $getAll = $this->db->prepare(
+      "SELECT e.entryID, e.title, e.content, e.createdAt, u.username, u.isAdmin, u.userID
+       FROM entries AS e
+       INNER JOIN users AS u
+       WHERE createdBy = :createdBy
+       GROUP BY entryID
+       ORDER BY e.createdAt DESC");
     $getAll->execute([
       ':createdBy' => $userID
     ]);
