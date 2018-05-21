@@ -4,7 +4,6 @@ async function createProfile(){
 
   // get user
   let user = await api.fetchData("users/username/" + username);
-  console.log(user);
 
   // if user does not exists
   if(user == false){ return false; }
@@ -12,10 +11,6 @@ async function createProfile(){
   let entries = await api.fetchData("entries/user/" + user["userID"]);
   let comments = await api.fetchData("users/" + user["userID"] + "/comments");
   let likes = await api.fetchData("users/" + user["userID"] + "/likes");
-
-  console.log(entries);
-  console.log(comments);
-  console.log(likes);
 
   // if X is not empty -> print
   if(entries[0] != null){
