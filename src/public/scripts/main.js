@@ -83,6 +83,13 @@ async function getAllEntries() {
   }
 
 
+
+async function getComments(entryID){
+  let userComments = await api.fetchData("entries/" + entryID + "/comments");
+  console.log(userComments);
+}
+
+
   async function getAllComments() {
     let userComments = await api.fetchData("comments");
 
@@ -110,8 +117,7 @@ async function getAllEntries() {
     let userLikes = await api.fetchData("likes");
     console.log(userLikes);
   }
-
-
+/*
 getAllEntries();
-getAllComments();
-getAllLikes();
+getComments(1);
+getAllLikes();*/
