@@ -27,15 +27,26 @@ async function createProfile(){
 
     // create all entries
     let entries = document.getElementById("profile-entries");
+    console.log(entries);
 
   }
+  
   if(comments[0] != null){
-    let menu = document.getElementById("profile-comments");
+    let container = document.getElementById("profile-comments");
+    let menu = document.getElementById("profile-menu");
+
     let button = document.createElement("button");
     button.innerHTML = "All Comments";
     menu.appendChild(button);
 
+    // create all likes
+    comments.forEach(function (comment) {
+      let d = buildData.comment(comment);
+      container.appendChild(d);
+    });
+
   }
+
   if(likes[0] != null){
     let container = document.getElementById("profile-likes");
     let menu = document.getElementById("profile-menu");
