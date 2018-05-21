@@ -5,7 +5,11 @@ async function likePost(e){
   let d = await api.postData("likes", data);
 }
 async function postComment(e) {
+  console.log(e.target);
+  let data = {
+    "entryID": e.target.elements["entryID"].value,
+    "content": e.target.elements["content"].value
+  };
 
-  console.log(e);
-  console.log("hej det är kommentar");
+   api.postData("comments", data);
 }

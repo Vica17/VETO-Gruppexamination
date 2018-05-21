@@ -36,7 +36,7 @@ $app->get('/entries/{entryID}/comments', function($request, $response, $args){
 $app->post('/comments', function ($request, $response, $args) {
   $body = $request->getParsedBody();
   $newComment = $this->comment->add(
-    $body['entryID'], $body['content'], $body['createdBy']
+    $body['entryID'], $body['content'], $session['userID']
   );
   return $response->withJson(['data' => $newComment]);
 });
