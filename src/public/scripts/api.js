@@ -28,8 +28,8 @@ const api = ( function(){
         "Content-Type": "application/json"
       }
     }).then( function() {
-      console.log("Request success!");
-    });  
+      console.log("Patch success!");
+    });
   }
 
   async function deleteData(url){
@@ -43,6 +43,7 @@ const api = ( function(){
   return{
     fetchData: fetchData,
     postData: postData,
+    patchData: patchData,
     deleteData: deleteData
   };
 
@@ -55,4 +56,5 @@ const api = ( function(){
 
 // api.fetchData(URL)
 // api.postData(URL, DATA)
+// api.patchData(URL, DATA)
 // api.deleteData(URL)
