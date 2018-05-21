@@ -109,6 +109,11 @@ var buildData = ( function(){
       commentInputButton.setAttribute("value","Comment");
       commentInputButton.setAttribute("name","commentButton");
 
+      commentForm.addEventListener("submit", function(e){
+        e.preventDefault();
+        postComment(e);
+      });
+
     commentForm.appendChild(commentInput);
     commentForm.appendChild(commentHidden);
     commentForm.appendChild(commentInputButton);
