@@ -24,6 +24,9 @@ async function getLikes(entryID){
   let userLikes = await api.fetchData("entries/" + entryID + "/likes");
   console.log(userLikes);
 }
+async function postComment() {
+  let postUserComment = await api.postData()
+}
 
 
   async function getAllComments() {
