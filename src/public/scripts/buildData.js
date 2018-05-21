@@ -18,7 +18,7 @@ var buildData = ( function(){
     let content = document.createElement("p");
       let contentInput = data["content"];
       let contentText = document.createTextNode(contentInput);
-      
+
     content.appendChild(contentText);
     container.appendChild(content);
     return container;
