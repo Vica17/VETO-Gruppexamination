@@ -8,10 +8,12 @@ async function getAllEntries() {
     for (var i = 0; i < entry.length; i++) {
       let div = document.getElementById("entries");
       let newArticle = document.createElement("article");
+        newArticle.setAttribute("class", "entry");
       div.appendChild(newArticle);
 
       //title
       let title = document.createElement("h2");
+        title.setAttribute("class", "entry-title");
       let titleInput = entry[i].title;
       let titleText = document.createTextNode(titleInput);
       title.appendChild(titleText);
@@ -19,6 +21,7 @@ async function getAllEntries() {
 
       //creator
       let creator = document.createElement("p");
+        creator.setAttribute("class", "entry-creator");
       let creatorInput = "Skriven av: " + entry[i].username;
       let creatorText = document.createTextNode(creatorInput);
       creator.appendChild(creatorText);
@@ -26,6 +29,7 @@ async function getAllEntries() {
 
       //date
       let created = document.createElement("p");
+        created.setAttribute("class", "entry-date");
       let createdInput = "Skapad: " + entry[i].createdAt;
       let createdText = document.createTextNode(createdInput);
       created.appendChild(createdText);
@@ -33,6 +37,7 @@ async function getAllEntries() {
 
       //content
       let content = document.createElement("p");
+        content.setAttribute("class", "entry-content");
       let contentInput = entry[i].content;
       let contentText = document.createTextNode(contentInput);
       content.appendChild(contentText);
@@ -40,41 +45,44 @@ async function getAllEntries() {
 
       //Like button
       let likeForm = document.createElement("form");
-          likeForm.setAttribute("action","/api/likes");
-          likeForm.setAttribute("method","post");
+        likeForm.setAttribute("action","/api/likes");
+        likeForm.setAttribute("method","post");
+        likeForm.setAttribute("class","like-btn-form");
       let likeHidden = document.createElement("input");
-          likeHidden.setAttribute("type","hidden");
-          likeHidden.setAttribute("name","entryID");
-          likeHidden.setAttribute("value", entry[i].entryID);
+        likeHidden.setAttribute("type","hidden");
+        likeHidden.setAttribute("name","entryID");
+        likeHidden.setAttribute("value", entry[i].entryID);
       let likeInput = document.createElement("input");
-          likeInput.setAttribute("type","submit");
-          likeInput.setAttribute("value","Like");
-          likeInput.setAttribute("name","likeButton");
+        likeInput.setAttribute("type","submit");
+        likeInput.setAttribute("value","Like");
+        likeInput.setAttribute("name","likeButton");
       likeForm.appendChild(likeHidden);
       likeForm.appendChild(likeInput);
       newArticle.appendChild(likeForm);
 
       //Get all comments button
       let commentButton = document.createElement("input");
-          commentButton.setAttribute("type", "button");
-          commentButton.setAttribute("value", "Show all comments");
-          commentButton.setAttribute("onclick", "getComments(1)");
+        commentButton.setAttribute("type", "button");
+        commentButton.setAttribute("value", "Show all comments");
+        commentButton.setAttribute("onclick", "getComments(1)");
+        commentButton.setAttribute("class","all-comment-btn-form");
       newArticle.appendChild(commentButton);
 
       //Comment button
       let commentForm = document.createElement("form");
-          commentForm.setAttribute("action","/comments");
-          commentForm.setAttribute("method","post");
+        commentForm.setAttribute("action","/comments");
+        commentForm.setAttribute("method","post");
+        commentForm.setAttribute("class","new-comment-btn-form");
       let commentHidden = document.createElement("input");
-          commentHidden.setAttribute("type","hidden");
-          commentHidden.setAttribute("name","userID");
-          commentHidden.setAttribute("value", entry[i].userID);
+        commentHidden.setAttribute("type","hidden");
+        commentHidden.setAttribute("name","userID");
+        commentHidden.setAttribute("value", entry[i].userID);
       let commentInput = document.createElement("input");
-          commentInput.setAttribute("type","input");
+        commentInput.setAttribute("type","input");
       let commentInputButton = document.createElement("input");
-          commentInputButton.setAttribute("type","submit");
-          commentInputButton.setAttribute("value","Comment");
-          commentInputButton.setAttribute("name","commentButton");
+        commentInputButton.setAttribute("type","submit");
+        commentInputButton.setAttribute("value","Comment");
+        commentInputButton.setAttribute("name","commentButton");
       commentForm.appendChild(commentInput);
       commentForm.appendChild(commentHidden);
       commentForm.appendChild(commentInputButton);
