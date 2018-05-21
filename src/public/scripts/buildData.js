@@ -106,15 +106,26 @@ var buildData = ( function(){
       commentHidden.setAttribute("type","hidden");
       commentHidden.setAttribute("name","userID");
       commentHidden.setAttribute("value", data["userID"]);
+    let commentHidden2 = document.createElement("input");
+        commentHidden2.setAttribute("type","hidden");
+        commentHidden2.setAttribute("name","entryID");
+        commentHidden2.setAttribute("value", data["entryID"]);
     let commentInput = document.createElement("input");
       commentInput.setAttribute("type","input");
+      commentInput.setAttribute("name","content");
     let commentInputButton = document.createElement("input");
       commentInputButton.setAttribute("type","submit");
       commentInputButton.setAttribute("value","Comment");
       commentInputButton.setAttribute("name","commentButton");
 
+      commentForm.addEventListener("submit", function(e){
+        e.preventDefault();
+        postComment(e);
+      });
+
     commentForm.appendChild(commentInput);
     commentForm.appendChild(commentHidden);
+    commentForm.appendChild(commentHidden2);
     commentForm.appendChild(commentInputButton);
     newArticle.appendChild(commentForm);
 

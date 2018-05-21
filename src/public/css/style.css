@@ -1,2 +1,38 @@
+body {
+  margin: 0; }
 
-/*# sourceMappingURL=../css/style.map */
+* {
+  font-family: Tahoma; }
+
+h1, h2, h3, h4 {
+  font-family: Amatic SC;
+  font-size: 200%; }
+
+h1 {
+  font-size: 300%;
+  text-align: center; }
+
+header {
+  background-color: #75d1dd;
+  padding-bottom: 2em; }
+  header h1 {
+    color: white; }
+
+.container {
+  padding: 0 2em 2em 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center; }
+
+.logout_button {
+  height: 2em;
+  width: auto; }
+
+.entry {
+  padding: 2em;
+  border: solid 1px lightgray;
+  border-radius: 5px;
+  margin-top: 1em; }
