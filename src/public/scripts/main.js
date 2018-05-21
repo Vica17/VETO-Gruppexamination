@@ -1,8 +1,11 @@
 //Print out all entries
 async function getAllEntries() {
+  let container = document.getElementById("entries");
+  if(container == null){
+    return 0;
+  }
   let entry = await api.fetchData("entries");
 
-  let container = document.getElementById("entries");
 
   for (var i = 0; i < entry.length; i++) {
     let d = buildData.entry(entry[i]);
