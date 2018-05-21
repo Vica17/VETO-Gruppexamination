@@ -14,9 +14,11 @@
   <div id="entries" onload="getAllEntries()" class="entries">
 
   </div>
+
   <div id="comments" class="comments">
 
   </div>
+
   <div class="button-wrap">
     <button onclick="getAllComments()" id="getComments">Get All Comments</button>
     <button onclick="getAllLikes()" id="getLikes">Get All Likes</button>
