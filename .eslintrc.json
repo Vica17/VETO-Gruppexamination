@@ -27,5 +27,8 @@
         ],
         "no-console": ["off"],
         "no-alert": ["off"]
+    },
+    "globals": {
+      "api": true
     }
 }

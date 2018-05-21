@@ -27,8 +27,8 @@ $app->get('/users/{userID}/comments', function($request, $response, $args){
 });
 
 // get all comments connected to a entry
-$app->get('/entries/{id}/comments', function($request, $response, $args){
-  $allComments = $this->comment->getAll($args["commentID"]);
+$app->get('/entries/{entryID}/comments', function($request, $response, $args){
+  $allComments = $this->comment->getAll($args["entryID"]);
   return $response->withJson($allComments);
 });
 

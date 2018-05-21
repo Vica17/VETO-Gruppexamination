@@ -34,6 +34,9 @@ $app->get('/', function ($request, $response, $args) {
     return $this->view->render($response, 'index.php');
 });
 
+$app->get('/profile/{username}', function ($request, $response, $args) {
+  return $this->view->render($response, 'profile.php', $args);
+});
 
 
 // Login & Logout
