@@ -1,87 +1,15 @@
 //Print out all entries
-getAllEntries();
 async function getAllEntries() {
   let entry = await api.fetchData("entries");
-  console.log(entry);
 
-    //loop through all entries
-    for (var i = 0; i < entry.length; i++) {
-      let div = document.getElementById("entries");
-      let newArticle = document.createElement("article");
-      div.appendChild(newArticle);
+  let container = document.getElementById("entries");
 
-      //title
-      let title = document.createElement("h2");
-      let titleInput = entry[i].title;
-      let titleText = document.createTextNode(titleInput);
-      title.appendChild(titleText);
-      newArticle.appendChild(title);
-
-      //creator
-      let creator = document.createElement("p");
-      let creatorInput = "Skriven av: " + entry[i].username;
-      let creatorText = document.createTextNode(creatorInput);
-      creator.appendChild(creatorText);
-      newArticle.appendChild(creator);
-
-      //date
-      let created = document.createElement("p");
-      let createdInput = "Skapad: " + entry[i].createdAt;
-      let createdText = document.createTextNode(createdInput);
-      created.appendChild(createdText);
-      newArticle.appendChild(created);
-
-      //content
-      let content = document.createElement("p");
-      let contentInput = entry[i].content;
-      let contentText = document.createTextNode(contentInput);
-      content.appendChild(contentText);
-      newArticle.appendChild(content);
-
-      //Like button
-      let likeForm = document.createElement("form");
-          likeForm.setAttribute("action","/api/likes");
-          likeForm.setAttribute("method","post");
-      let likeHidden = document.createElement("input");
-          likeHidden.setAttribute("type","hidden");
-          likeHidden.setAttribute("name","entryID");
-          likeHidden.setAttribute("value", entry[i].entryID);
-      let likeInput = document.createElement("input");
-          likeInput.setAttribute("type","submit");
-          likeInput.setAttribute("value","Like");
-          likeInput.setAttribute("name","likeButton");
-      likeForm.appendChild(likeHidden);
-      likeForm.appendChild(likeInput);
-      newArticle.appendChild(likeForm);
-
-      //Get all comments button
-      let commentButton = document.createElement("input");
-          commentButton.setAttribute("type", "button");
-          commentButton.setAttribute("value", "Show all comments");
-          commentButton.setAttribute("onclick", "getComments(1)");
-      newArticle.appendChild(commentButton);
-
-      //Comment button
-      let commentForm = document.createElement("form");
-          commentForm.setAttribute("action","/comments");
-          commentForm.setAttribute("method","post");
-      let commentHidden = document.createElement("input");
-          commentHidden.setAttribute("type","hidden");
-          commentHidden.setAttribute("name","userID");
-          commentHidden.setAttribute("value", entry[i].userID);
-      let commentInput = document.createElement("input");
-          commentInput.setAttribute("type","input");
-      let commentInputButton = document.createElement("input");
-          commentInputButton.setAttribute("type","submit");
-          commentInputButton.setAttribute("value","Comment");
-          commentInputButton.setAttribute("name","commentButton");
-      commentForm.appendChild(commentInput);
-      commentForm.appendChild(commentHidden);
-      commentForm.appendChild(commentInputButton);
-      newArticle.appendChild(commentForm);
-
-    }
+  for (var i = 0; i < entry.length; i++) {
+    let d = buildData.entry(entry[i]);
+    container.appendChild(d);
   }
+}
+getAllEntries();
 
 
 
@@ -119,7 +47,6 @@ async function getLikes(entryID){
     console.log(userLikes);
   }
 
-/*
-getComments(1);
-getAllLikes();
-*/
+
+// getComments(1);
+// getAllLikes();
