@@ -29,6 +29,8 @@ async function postComment() {
 }
 
 
+
+
   async function getAllComments() {
     let userComments = await api.fetchData("comments");
 
