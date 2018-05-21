@@ -81,8 +81,26 @@ async function getAllEntries() {
 
   async function getAllComments() {
     let userComments = await api.fetchData("comments");
-    console.log(userComments);
+
+    let div = document.getElementById("comments");
+    //title
+    let title = document.createElement("h2");
+    let titleText = document.createTextNode("Comments");
+    title.appendChild(titleText);
+    div.appendChild(title);
+
+    for(var i = 0; i < userComments.length; i++){
+
+      //content
+      let content = document.createElement("p");
+      let contentInput = userComments[i]["content"];
+      let contentText = document.createTextNode(contentInput);
+      content.appendChild(contentText);
+      div.appendChild(content);
+    }
+
   }
+
   async function getAllLikes() {
     let userLikes = await api.fetchData("likes");
     console.log(userLikes);
