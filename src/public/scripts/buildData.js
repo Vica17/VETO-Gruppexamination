@@ -12,11 +12,16 @@ var buildData = ( function(){
   }
 
   function comment(data){
+    let container = document.createElement("div");
+      container.setAttribute("class", "comment");
+
     let content = document.createElement("p");
-    let contentInput = data["content"];
-    let contentText = document.createTextNode(contentInput);
+      let contentInput = data["content"];
+      let contentText = document.createTextNode(contentInput);
+      
     content.appendChild(contentText);
-    return content;
+    container.appendChild(content);
+    return container;
   }
 
   return {
