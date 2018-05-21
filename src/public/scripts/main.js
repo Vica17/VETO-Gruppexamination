@@ -89,6 +89,10 @@ async function getComments(entryID){
   let userComments = await api.fetchData("entries/" + entryID + "/comments");
   console.log(userComments);
 }
+async function getLikes(entryID){
+  let userLikes = await api.fetchData("entries/" + entryID + "/likes");
+  console.log(userLikes);
+}
 
 
   async function getAllComments() {
@@ -104,12 +108,8 @@ async function getComments(entryID){
 
     for(var i = 0; i < userComments.length; i++){
 
-      //content
-      let content = document.createElement("p");
-      let contentInput = userComments[i]["content"];
-      let contentText = document.createTextNode(contentInput);
-      content.appendChild(contentText);
-      div.appendChild(content);
+      let comment = buildData.comment(userComments[i]);
+      div.appendChild(comment);
     }
 
   }
