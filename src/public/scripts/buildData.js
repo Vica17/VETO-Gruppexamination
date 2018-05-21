@@ -107,10 +107,10 @@ var buildData = ( function(){
       commentHidden.setAttribute("name","userID");
       commentHidden.setAttribute("value", data["userID"]);
     let commentHidden2 = document.createElement("input");
-        commentHidden2.setAttribute("type","hidden");
-        commentHidden2.setAttribute("name","entryID");
-        commentHidden2.setAttribute("value", data["entryID"]);
-    let commentInput = document.createElement("input");
+      commentHidden2.setAttribute("type","hidden");
+      commentHidden2.setAttribute("name","entryID");
+      commentHidden2.setAttribute("value", data["entryID"]);
+    let commentInput = document.createElement("textarea");
       commentInput.setAttribute("type","input");
       commentInput.setAttribute("name","content");
     let commentInputButton = document.createElement("input");

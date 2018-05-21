@@ -19,11 +19,12 @@ async function likePost(e){
 
 }
 async function postComment(e) {
-  console.log(e.target);
+
   let data = {
     "entryID": e.target.elements["entryID"].value,
     "content": e.target.elements["content"].value
   };
 
-   api.postData("comments", data);
+  api.postData("comments", data);
+
 }
