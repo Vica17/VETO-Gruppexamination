@@ -11,8 +11,17 @@ var buildData = ( function(){
     return container;
   }
 
+  function comment(data){
+    let content = document.createElement("p");
+    let contentInput = data["content"];
+    let contentText = document.createTextNode(contentInput);
+    content.appendChild(contentText);
+    return content;
+  }
+
   return {
-    like: like
+    like: like,
+    comment: comment
   };
 
 })();
