@@ -1,4 +1,4 @@
-//Print out or entries
+//Print out all entries
 async function getAllEntries() {
   let entry = await api.fetchData("entries");
   console.log(entry);
@@ -17,14 +17,14 @@ async function getAllEntries() {
       newArticle.appendChild(title);
 
       //creator
-      let creator = document.createElement("h5");
-      let creatorInput = entry[i].username;
+      let creator = document.createElement("p");
+      let creatorInput = "Skriven av: " + entry[i].username;
       let creatorText = document.createTextNode(creatorInput);
       creator.appendChild(creatorText);
       newArticle.appendChild(creator);
 
       //date
-      let created = document.createElement("h5");
+      let created = document.createElement("p");
       let createdInput = "Skapad: " + entry[i].createdAt;
       let createdText = document.createTextNode(createdInput);
       created.appendChild(createdText);
@@ -53,6 +53,12 @@ async function getAllEntries() {
       likeForm.appendChild(likeInput);
       newArticle.appendChild(likeForm);
 
+      //Get all comments button
+      let commentButton = document.createElement("input");
+          commentButton.setAttribute("type", "button");
+          commentButton.setAttribute("value", "Show all comments");
+          commentButton.setAttribute("onclick", "getAllComments()");
+      newArticle.appendChild(commentButton);
 
       //Comment button
       let commentForm = document.createElement("form");
@@ -72,10 +78,10 @@ async function getAllEntries() {
       commentForm.appendChild(commentHidden);
       commentForm.appendChild(commentInputButton);
       newArticle.appendChild(commentForm);
-      //console log out all
-      console.log(titleInput);
+
     }
   }
+
 
 
 async function getComments(entryID){
@@ -83,10 +89,12 @@ async function getComments(entryID){
   console.log(userComments);
 }
 
+
   async function getAllComments() {
     let userComments = await api.fetchData("comments");
 
     let div = document.getElementById("comments");
+
     //title
     let title = document.createElement("h2");
     let titleText = document.createTextNode("Comments");
