@@ -75,6 +75,11 @@ var buildData = ( function(){
       likeInput.setAttribute("value","Like");
       likeInput.setAttribute("name","likeButton");
 
+    likeForm.addEventListener("submit", function(e){
+      e.preventDefault();
+      likePost(e);
+    });
+
     likeForm.appendChild(likeHidden);
     likeForm.appendChild(likeInput);
     newArticle.appendChild(likeForm);

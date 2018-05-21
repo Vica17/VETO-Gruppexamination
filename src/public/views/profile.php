@@ -12,6 +12,7 @@
 
 <script src="/scripts/api.js"></script>
 <script src="/scripts/buildData.js"></script>
+<script src="/scripts/functions.js"></script>
 <script src="/scripts/profile.js"></script>
 
 
