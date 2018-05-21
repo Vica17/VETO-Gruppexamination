@@ -1,4 +1,5 @@
 //Print out all entries
+getAllEntries();
 async function getAllEntries() {
   let entry = await api.fetchData("entries");
   console.log(entry);
@@ -57,7 +58,7 @@ async function getAllEntries() {
       let commentButton = document.createElement("input");
           commentButton.setAttribute("type", "button");
           commentButton.setAttribute("value", "Show all comments");
-          commentButton.setAttribute("onclick", "getAllComments()");
+          commentButton.setAttribute("onclick", "getComments(1)");
       newArticle.appendChild(commentButton);
 
       //Comment button
@@ -117,7 +118,8 @@ async function getComments(entryID){
     let userLikes = await api.fetchData("likes");
     console.log(userLikes);
   }
+
 /*
-getAllEntries();
 getComments(1);
-getAllLikes();*/
+getAllLikes();
+*/
