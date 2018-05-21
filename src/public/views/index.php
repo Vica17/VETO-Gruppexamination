@@ -1,30 +1,18 @@
 <?php require 'components/head.php'; ?>
-
   <?php
-    if(isLoggedIn()){
-      echo "<h1>Welcome, " . $_SESSION['username'] . "!</h1>";
-      require 'components/logout_btn.php';
-      ?>
+    if(isLoggedIn()){?>
+      <header>
+      <?php require 'components/logout_btn.php';?>
+      <h1>Welcome, <?php echo $_SESSION['username']?>!</h1>
+      </header>
+
+      <div class="container">
       <div id="entries" onload="getAllEntries()" class="entries"></div>
-      <?php
-    }
+      <?php }
     else {
       require 'components/login_form.php';
       require 'components/register_form.php';
-    }
-  ?>
-
-
-
-  <!-- <div id="comments" class="comments">
-
-  </div>
-
-  <div class="button-wrap">
-    <button onclick="getAllComments()" id="getComments">Get All Comments</button>
-    <button onclick="getAllLikes()" id="getLikes">Get All Likes</button>
-  </div> -->
-
+    }?>
 
 
   <script src="/scripts/buildData.js"></script>
