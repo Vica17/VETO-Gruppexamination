@@ -70,17 +70,21 @@ var buildData = ( function(){
       likeHidden.setAttribute("type","hidden");
       likeHidden.setAttribute("name","entryID");
       likeHidden.setAttribute("value", data["entryID"]);
+    let userHidden = document.createElement("input");
+      userHidden.setAttribute("type","hidden");
+      userHidden.setAttribute("name","userID");
+      userHidden.setAttribute("value", data["userID"]);
     let likeInput = document.createElement("input");
       likeInput.setAttribute("type","submit");
       likeInput.setAttribute("value","Like");
       likeInput.setAttribute("name","likeButton");
 
     likeForm.addEventListener("submit", function(e){
-      e.preventDefault();
-      likePost(e);
+      e.preventDefault(); likePost(e);
     });
 
     likeForm.appendChild(likeHidden);
+    likeForm.appendChild(userHidden);
     likeForm.appendChild(likeInput);
     newArticle.appendChild(likeForm);
 

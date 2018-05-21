@@ -10,6 +10,7 @@ const api = ( function(){
     fetch("/api/" + url,{
       method: "POST",
       body: JSON.stringify(data),
+      credentials: "include",
       headers: {
         "Accept": "application/json, text/plain, */*",
         "Content-Type": "application/json"

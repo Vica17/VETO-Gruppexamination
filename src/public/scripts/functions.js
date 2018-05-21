@@ -1,6 +1,8 @@
 async function likePost(e){
-  console.log(e);
-  console.log("VAD FAN DÅ FUNKAAAAA!!!!!!");
+  let data = {
+    "entryID": e.target.elements["entryID"].value
+  };
+  let d = await api.postData("likes", data);
 }
 async function postComment(e) {
 
