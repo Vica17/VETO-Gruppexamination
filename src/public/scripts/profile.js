@@ -19,18 +19,21 @@ async function createProfile(){
 
   // if X is not empty -> print
   if(entries[0] != null){
-    // create menu button
+    let container = document.getElementById("profile-entries");
     let menu = document.getElementById("profile-menu");
+
     let button = document.createElement("button");
-    button.innerHTML = "All Entries";
+      button.innerHTML = "All Entries";
     menu.appendChild(button);
 
     // create all entries
-    let entries = document.getElementById("profile-entries");
-    console.log(entries);
+    entries.forEach(function (entry) {
+      let d = buildData.entry(entry);
+      container.appendChild(d);
+    });
 
   }
-  
+
   if(comments[0] != null){
     let container = document.getElementById("profile-comments");
     let menu = document.getElementById("profile-menu");
@@ -52,7 +55,7 @@ async function createProfile(){
     let menu = document.getElementById("profile-menu");
 
     let button = document.createElement("button");
-    button.innerHTML = "All Likes";
+      button.innerHTML = "All Likes";
     menu.appendChild(button);
 
     // create all likes
