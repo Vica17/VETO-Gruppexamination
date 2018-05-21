@@ -29,6 +29,7 @@
         "no-alert": ["off"]
     },
     "globals": {
-      "api": true
+      "api": true,
+      "buildData": true
     }
 }
