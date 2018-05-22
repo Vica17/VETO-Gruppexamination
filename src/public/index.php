@@ -46,9 +46,16 @@ $app->get('/documentation', function ($request, $response, $args) {
 $app->get('/post/{postID}', function ($request, $response, $args) {
   return $this->view->render($response, 'post.php');
 });
+
 $app->get('/new', function ($request, $response, $args) {
   return $this->view->render($response, 'post_entry.php');
 });
+
+$app->post('/edit', function ($request, $response, $args) {
+  $body = $request->getParsedBody();
+  return $this->view->render($response, 'edit.php', $body);
+});
+
 
 // Login & Logout
 $app->post('/login', function ($request, $response, $args) {

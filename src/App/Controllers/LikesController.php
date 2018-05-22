@@ -64,7 +64,12 @@ class LikesController{
 
   // get all likes for a user
   public function getAllLikesForUser($userID){
-    $getAll = $this->db->prepare("SELECT  l.likeID, l.entryID, l.userID, e.title FROM likes as l INNER JOIN entries as e WHERE l.userID = :userID GROUP BY l.likeID");
+    $getAll = $this->db->prepare(
+      "SELECT  l.likeID, l.entryID, l.userID, e.title
+      FROM likes as l
+      INNER JOIN entries as e
+      WHERE l.userID = :userID AND l.entryID = e.entryID
+      GROUP BY l.likeID");
     $getAll->execute([
       ':userID' => $userID
     ]);

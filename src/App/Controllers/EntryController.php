@@ -29,7 +29,12 @@ class EntryController{
 
   // Get specific entry
   public function getOne($entryID){
-    $getOne = $this->db->prepare('SELECT * FROM entries WHERE entryID = :entryID');
+    $getOne = $this->db->prepare(
+      "SELECT e.entryID, e.title, e.content, e.createdAt, u.username, u.isAdmin, u.userID
+       FROM entries AS e
+       INNER JOIN users AS u
+       WHERE entryID = :entryID
+       GROUP BY entryID");
     $getOne->execute([':entryID' => $entryID]);
     return $getOne->fetch();
   }
