@@ -6,6 +6,8 @@ var logoutBtn = document.getElementById("logoutBtn");
 
 let searchEntries = document.getElementById("search-entries");
 let createNewEntry= document.getElementById("createNewEntry");
+let postEntry = document.getElementById("post-entry");
+let editEntryForm = document.getElementById("edit-entry-form");
 
 
 
@@ -44,6 +46,41 @@ if(searchEntries != null){
 if(postEntry != null){
   getPostsFromID();
 }
+if(editEntryForm != null){
+  editEntryForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    editPost(e);
+  });
+}
+
+
+async function editPost(e){
+
+  let entryID = e.target.elements["entryID"].value;
+  let data = {
+    "title": e.target.elements["title"].value,
+    "content": e.target.elements["content"].value,
+    "createdBy": e.target.elements["userID"].value
+  };
+
+  fetch("/api/entries/" + entryID, {
+    method: "PATCH",
+    body: JSON.stringify(data),
+    credentials: "include",
+    headers: {
+      "Accept": "application/json, text/plain, */*",
+      "Content-Type": "application/json"
+    }
+  })
+  .then( async function(data){
+    console.log("Your Post has been updated!");
+    location.assign("/post/" + entryID);
+  })
+  .catch( async function(){
+    console.log("Opps! Something went wrong!");
+  });
+}
+
 
 
 
