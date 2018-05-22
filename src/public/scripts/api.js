@@ -16,7 +16,7 @@ const api = ( function(){
         "Content-Type": "application/json"
       }
     }).then( function() {
-      console.log("Request success!");
+      console.log("Posted!");
     });
   }
 
