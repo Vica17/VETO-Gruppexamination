@@ -5,6 +5,7 @@ var logoutform = document.getElementById("register-form");
 var logoutBtn = document.getElementById("logoutBtn");
 
 let searchEntries = document.getElementById("search-entries");
+let createNewEntry= document.getElementById("createNewEntry");
 let postEntry = document.getElementById("post-entry");
 let editEntryForm = document.getElementById("edit-entry-form");
 
@@ -222,4 +223,12 @@ async function deleteEntry(e, loc) {
 let entryID = e.target.elements["entryID"].value;
  await api.deleteData("entries/" + entryID);
  loc.style.display = "none";
+}
+async function createNewEntry(e){
+  let data = {
+    "title": e.target.elements["title"].value,
+    "content": e.target.elements["content"].value,
+    "createdBy": e.target.elements["createdBy"].value
+  };
+  api.postData("entries", data);
 }

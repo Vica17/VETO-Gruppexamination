@@ -47,6 +47,10 @@ $app->get('/post/{postID}', function ($request, $response, $args) {
   return $this->view->render($response, 'post.php');
 });
 
+$app->get('/new', function ($request, $response, $args) {
+  return $this->view->render($response, 'post_entry.php');
+})
+  
 $app->post('/edit', function ($request, $response, $args) {
   $body = $request->getParsedBody();
   // die(var_dump($body));

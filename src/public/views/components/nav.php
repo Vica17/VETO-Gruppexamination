@@ -1,8 +1,8 @@
 <nav>
 
   <div class="nav-left">
-    <li> <a href="/">Home</a> </li>
-    <li> <a href="/documentation">Documentation</a> </li>
+    <a href="/">Home</a>
+    <a href="/documentation">Documentation</a>
     <?php if(isLoggedIn()): ?>
       <a href="/profile/<?php echo $_SESSION['username']; ?>">Profile</a>
     <?php endif; ?>
