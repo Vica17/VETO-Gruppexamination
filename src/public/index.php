@@ -39,6 +39,14 @@ $app->get('/search', function ($request, $response, $args) {
   return $this->view->render($response, 'search.php');
 });
 
+$app->get('/documentation', function ($request, $response, $args) {
+  return $this->view->render($response, 'documentation.php');
+});
+
+$app->get('/post/{postID}', function ($request, $response, $args) {
+  return $this->view->render($response, 'post.php');
+});
+
 
 // Login & Logout
 $app->post('/login', function ($request, $response, $args) {
