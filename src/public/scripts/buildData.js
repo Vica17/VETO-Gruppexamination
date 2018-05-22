@@ -33,8 +33,9 @@ var buildData = ( function(){
       deleteBtn.setAttribute("type","submit");
       deleteBtn.setAttribute("value", "delete");
       deleteBtn.setAttribute("class", "deleteCommentButton");
+      
       deleteForm.addEventListener("submit",function(e) {
-        e.preventDefault();deleteComment(e, container);
+        e.preventDefault(); deleteComment(e, container);
       });
 
     deleteForm.appendChild(user);
@@ -63,10 +64,6 @@ var buildData = ( function(){
       deleteButton.setAttribute("type", "submit");
       deleteButton.setAttribute("value", "Delete entry");
       deleteButton.setAttribute("class", "deleteEntryButton");
-
-      deleteEntryForm.addEventListener("submit", function(e){
-        e.preventDefault(); deleteEntry(e, newArticle);
-      });
 
     deleteEntryForm.addEventListener("submit", function(e){
       e.preventDefault(); deleteEntry(e, newArticle);

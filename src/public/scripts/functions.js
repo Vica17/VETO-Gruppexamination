@@ -1,11 +1,9 @@
-
-
 var loginform = document.getElementById("login-form");
 var logoutform = document.getElementById("register-form");
 var logoutBtn = document.getElementById("logoutBtn");
 
 let searchEntries = document.getElementById("search-entries");
-let createNewEntry= document.getElementById("createNewEntry");
+let createNewEntry = document.getElementById("createNewEntry");
 let postEntry = document.getElementById("post-entry");
 let editEntryForm = document.getElementById("edit-entry-form");
 
@@ -52,7 +50,12 @@ if(editEntryForm != null){
     editPost(e);
   });
 }
-
+if(createNewEntry != null){
+  createNewEntry.addEventListener("submit", function(e){
+    e.preventDefault();
+    createANewEntry(e);
+  });
+}
 
 async function editPost(e){
 
@@ -223,8 +226,9 @@ async function deleteEntry(e, loc) {
 let entryID = e.target.elements["entryID"].value;
  await api.deleteData("entries/" + entryID);
  loc.style.display = "none";
-}
-async function createNewEntry(e){
+};
+
+async function createANewEntry(e){
   let data = {
     "title": e.target.elements["title"].value,
     "content": e.target.elements["content"].value,
