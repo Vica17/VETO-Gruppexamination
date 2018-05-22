@@ -158,7 +158,8 @@ async function getPostsFromSearch() {
   }
 }
 
-async function deleteComment() {
-  let commentID = 
-  let deleteUserComment= await api.deleteData("comments/" + commentID);
+async function deleteComment(e, loc) {
+let commentID = e.target.elements["commentID"].value;
+ await api.deleteData("comments/" + commentID);
+ loc.style.display = "none";
 }

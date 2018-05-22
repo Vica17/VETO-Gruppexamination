@@ -19,14 +19,27 @@ var buildData = ( function(){
       user.setAttribute("class", "user");
       user.innerHTML = "<b>" + data["username"] + " said:</b> " + data["content"];
 
-      let deleteBtn = document.createElement("button");
+      let deleteForm = document.createElement("form");
+        deleteForm.setAttribute("action","/api/comments");
+        deleteForm.setAttribute("method","delete");
+        deleteForm.setAttribute("class","delete-btn-form");
+      let userHidden = document.createElement("input");
+        userHidden.setAttribute("type","hidden");
+        userHidden.setAttribute("name","commentID");
+        userHidden.setAttribute("value", data["commentID"]);
+
+
+      let deleteBtn = document.createElement("input");
+      deleteBtn.setAttribute("type","submit");
       deleteBtn.setAttribute("value", "delete");
-      deleteBtn.addEventListener("click",function() {
-       deleteComment();
+      deleteForm.addEventListener("submit",function(e) {
+        e.preventDefault();deleteComment(e, container);
       });
 
-    container.appendChild(user);
-    container.appendChild(deleteBtn);
+    deleteForm.appendChild(user);
+    deleteForm.appendChild(deleteBtn);
+    deleteForm.appendChild(userHidden);
+    container.appendChild(deleteForm);
     return container;
   }
 
