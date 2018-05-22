@@ -1,2 +1,9 @@
-
 $accent-color: rgb(117, 209, 221);
+
+@mixin button-style{
+  appearance: none;
+  padding: 0.5em;
+  width: auto;
+  border-radius: 5px;
+  margin: 1em;
+}
