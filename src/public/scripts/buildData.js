@@ -19,7 +19,14 @@ var buildData = ( function(){
       user.setAttribute("class", "user");
       user.innerHTML = "<b>" + data["username"] + " said:</b> " + data["content"];
 
+      let deleteBtn = document.createElement("button");
+      deleteBtn.setAttribute("value", "delete");
+      deleteBtn.addEventListener("click",function() {
+       deleteComment();
+      });
+
     container.appendChild(user);
+    container.appendChild(deleteBtn);
     return container;
   }
 
@@ -77,12 +84,6 @@ var buildData = ( function(){
       likeInput.setAttribute("type","submit");
       likeInput.setAttribute("value","Like");
       likeInput.setAttribute("name","likeButton");
-
-
-    // if user has liked
-      // add class
-    // else
-      // remove class
 
     likeForm.addEventListener("submit", function(e){
       e.preventDefault(); likePost(e);

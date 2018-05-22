@@ -167,3 +167,8 @@ async function getAllEntryComments(e, loc){
   e.target.style.display = "none";
 
 }
+
+async function deleteComment() {
+  let commentID = 
+  let deleteUserComment= await api.deleteData("comments/" + commentID);
+}
