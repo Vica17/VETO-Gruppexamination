@@ -163,3 +163,9 @@ let commentID = e.target.elements["commentID"].value;
  await api.deleteData("comments/" + commentID);
  loc.style.display = "none";
 }
+
+async function deleteEntry(e, loc) {
+let entryID = e.target.elements["entryID"].value;
+ await api.deleteData("entries/" + entryID);
+ loc.style.display = "none";
+}

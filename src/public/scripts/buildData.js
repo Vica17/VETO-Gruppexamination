@@ -51,23 +51,27 @@ var buildData = ( function(){
     //Delete entry button
     let deleteEntryForm = document.createElement("form");
       deleteEntryForm.setAttribute("action","/entries/" +  data["entryID"] + "/entries");
-      deleteEntryForm.setAttribute("method","post");
-    let deleteButton = document.createElement("input");
-      deleteButton.setAttribute("type", "submit");
-      deleteButton.setAttribute("value", "Delete entry");
-      deleteButton.setAttribute("class", "deleteEntryButton");
+      deleteEntryForm.setAttribute("method","delete");
+      deleteEntryForm.setAttribute("class", "deleteEntryButton");
+
     let deleteButtonHidden = document.createElement("input");
       deleteButtonHidden.setAttribute("type","hidden");
       deleteButtonHidden.setAttribute("name","entryID");
       deleteButtonHidden.setAttribute("value", data["entryID"]);
+
+      let deleteButton = document.createElement("input");
+        deleteButton.setAttribute("type", "submit");
+        deleteButton.setAttribute("value", "Delete entry");
+
+        deleteEntryForm.addEventListener("submit", function(e){
+          e.preventDefault(); deleteEntry(e, newArticle);
+        });
+
+
     deleteEntryForm.appendChild(deleteButton);
     deleteEntryForm.appendChild(deleteButtonHidden);
 
     //adds delete function to delete likeButton
-    deleteEntryForm.addEventListener("submit", function(e){
-      e.preventDefault(); deleteEntry(e, commentLoadLocation);
-    });
-    
     newArticle.appendChild(deleteEntryForm);
 
     //title
