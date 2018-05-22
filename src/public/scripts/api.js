@@ -16,7 +16,7 @@ const api = ( function(){
         "Content-Type": "application/json"
       }
     }).then( function() {
-      console.log("Request success!");
+      console.log("Posted!");
     });
   }
 
@@ -24,6 +24,7 @@ const api = ( function(){
     fetch("/api/" + url,{
       method: "PATCH",
       body: JSON.stringify(data),
+      credentials: "include",
       headers: {
         "Accept": "application/json, text/plain, */*",
         "Content-Type": "application/json"
