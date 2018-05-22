@@ -15,12 +15,11 @@ var buildData = ( function(){
     let container = document.createElement("div");
       container.setAttribute("class", "comment");
 
-    let content = document.createElement("p");
-      let contentInput = data["content"];
-      let contentText = document.createTextNode(contentInput);
+    let user = document.createElement("p");
+      user.setAttribute("class", "user");
+      user.innerHTML = "<b>" + data["username"] + " said:</b> " + data["content"];
 
-    content.appendChild(contentText);
-    container.appendChild(content);
+    container.appendChild(user);
     return container;
   }
 
@@ -89,13 +88,30 @@ var buildData = ( function(){
     newArticle.appendChild(likeForm);
 
     //Get all comments button
+    let getAllCommentsForm = document.createElement("form");
+      getAllCommentsForm.setAttribute("action","/entries/" +  data["entryID"] + "/entries");
+      getAllCommentsForm.setAttribute("method","post");
+      getAllCommentsForm.setAttribute("class","all-comments-form");
     let commentButton = document.createElement("input");
-      commentButton.setAttribute("type", "button");
+      commentButton.setAttribute("type", "submit");
       commentButton.setAttribute("value", "Show all comments");
-      commentButton.setAttribute("onclick", "getComments(1)");
       commentButton.setAttribute("class","all-comment-btn-form");
+    let getAllCommentsHidden = document.createElement("input");
+      getAllCommentsHidden.setAttribute("type","hidden");
+      getAllCommentsHidden.setAttribute("name","entryID");
+      getAllCommentsHidden.setAttribute("value", data["entryID"]);
 
-    newArticle.appendChild(commentButton);
+    let commentLoadLocation = document.createElement("div");
+      commentLoadLocation.setAttribute("class", "comments-load-location");
+
+    getAllCommentsForm.addEventListener("submit", function(e){
+      e.preventDefault(); getAllEntryComments(e, commentLoadLocation);
+    });
+
+    getAllCommentsForm.appendChild(commentButton);
+    getAllCommentsForm.appendChild(getAllCommentsHidden);
+    newArticle.appendChild(getAllCommentsForm);
+    newArticle.appendChild(commentLoadLocation);
 
     //Comment button
     let commentForm = document.createElement("form");
