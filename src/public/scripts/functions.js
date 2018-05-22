@@ -5,6 +5,7 @@ var logoutform = document.getElementById("register-form");
 var logoutBtn = document.getElementById("logoutBtn");
 
 let searchEntries = document.getElementById("search-entries");
+let postEntry = document.getElementById("post-entry");
 
 
 
@@ -39,6 +40,9 @@ if(logoutBtn != null){
 
 if(searchEntries != null){
   getPostsFromSearch();
+}
+if(postEntry != null){
+  getPostsFromID();
 }
 
 
@@ -156,6 +160,20 @@ async function getPostsFromSearch() {
       searchEntries.appendChild(res);
     });
   }
+}
+
+async function getPostsFromID() {
+  let key = window.location.pathname.split("/").slice(-1)[0];
+
+  let data = await api.fetchData("entries/" + key);
+  let res = buildData.entry(data);
+  postEntry.appendChild(res);
+
+  let comments = await api.fetchData("entries/" + data.entryID + "/comments");
+  comments.forEach(function (d) {
+    let res = buildData.comment(d);
+    postEntry.appendChild(res);
+  });
 }
 
 async function deleteComment(e, loc) {
