@@ -1,4 +1,4 @@
-<div class="form">
+<div id="login-form" class="form">
   <div class=header>
     <h2>Login</h2>
   </div>

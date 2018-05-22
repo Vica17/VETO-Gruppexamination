@@ -1,4 +1,4 @@
-<div class="form">
+<div class="form" id="register-form">
   <div class=header>
   <h2>Register</h2>
   </div>

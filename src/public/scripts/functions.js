@@ -1,3 +1,99 @@
+
+
+var loginform = document.getElementById("login-form");
+var logoutform = document.getElementById("register-form");
+var logoutBtn = document.getElementById("logoutBtn");
+
+
+
+if(loginform != null){
+  loginform.addEventListener("submit", (e) => {
+    e.preventDefault();
+    var data = {
+      "username": e.target.elements["username"].value,
+      "password": e.target.elements["password"].value
+    };
+    login(data);
+  });
+}
+
+if(logoutform != null){
+  logoutform.addEventListener("submit", (e) => {
+    e.preventDefault();
+    var data = {
+      "username": e.target.elements["username"].value,
+      "password": e.target.elements["password"].value
+    };
+    register(data);
+  });
+}
+
+if(logoutBtn != null){
+  logoutBtn.addEventListener("submit", (e) => {
+    e.preventDefault();
+    logout();
+  });
+}
+
+
+
+
+
+async function login(data){
+  fetch("/login", {
+    method: "POST",
+    body: JSON.stringify(data),
+    credentials: "include",
+    headers: {
+      "Accept": "application/json, text/plain, */*",
+      "Content-Type": "application/json"
+    }
+  })
+  .then( async function(data) {
+    let a = await data.json();
+    if(a != false){
+      sessionStorage.setItem("userID", a[0]);
+      sessionStorage.setItem("isAdmin", a[1]);
+      location.reload();
+    }
+    else {
+      console.log("Opps something went wrong.");
+    }
+  })
+  .catch(async function(){
+    console.log("Opps something went wrong.");
+  });
+}
+
+async function register(data){
+  fetch("/register", {
+    method: "POST",
+    body: JSON.stringify(data),
+    credentials: "include",
+    headers: {
+      "Accept": "application/json, text/plain, */*",
+      "Content-Type": "application/json"
+    }
+  });
+}
+
+async function logout(){
+  fetch("/logout", {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      "Accept": "application/json, text/plain, */*",
+      "Content-Type": "application/json"
+    }
+  })
+  .then( async function() {
+    sessionStorage.clear();
+    location.reload();
+  });
+}
+
+
+
 async function likePost(e){
 
   let entryID = e.target.elements["entryID"].value;
@@ -8,7 +104,7 @@ async function likePost(e){
   };
   api.postData("likes", data);
 
-
+  
 
   // if user has already liked -> remove like
   // else -> add like
