@@ -11,7 +11,7 @@ class CommentController{
     $this->db = $pdo;
   }
 
-  //get latest 20 comments
+  // get latest 20 comments
   public function getAll($limit = 20){
     $getAll = $this->db->prepare("SELECT * FROM comments ORDER BY createdAt DESC LIMIT :myLimit");
     $myLimit = (int)$limit;
@@ -45,7 +45,7 @@ class CommentController{
     ]);
   }
 
-  //remove comment
+  // remove comment
   public function remove($commentID){
     $statement = $this->db->prepare(
       "DELETE FROM comments WHERE commentID = :commentID"
@@ -55,11 +55,25 @@ class CommentController{
     ]);
   }
 
-  //get all comments connected to entry
+  // get all comments connected to user
   public function getAllConnectedUsers($userID){
     $getAll = $this->db->prepare("SELECT * FROM comments WHERE createdBy = :createdBy");
     $getAll->execute([
       ':createdBy' => $userID
+    ]);
+    return $getAll->fetchAll();
+  }
+
+  // get all comments connected to entry
+  public function getAllConnectedEntryComments($entryID){
+    $getAll = $this->db->prepare(
+      "SELECT c.commentID, c.entryID, c.content, u.userID, u.username
+       FROM comments AS c
+       INNER JOIN users AS u
+       WHERE entryID = :entryID && c.createdBy = u.userID
+       GROUP BY commentID");
+    $getAll->execute([
+      ':entryID' => $entryID
     ]);
     return $getAll->fetchAll();
   }

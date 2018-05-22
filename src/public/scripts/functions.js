@@ -28,3 +28,20 @@ async function postComment(e) {
   api.postData("comments", data);
 
 }
+
+
+
+async function getAllEntryComments(e, loc){
+
+  let entryID = e.target.elements["entryID"].value;
+
+  let userComments = await api.fetchData("entries/" + entryID + "/comments");
+
+  userComments.forEach(function (entry) {
+    let eachComment = buildData.comment(entry);
+    loc.appendChild(eachComment);
+  });
+
+  e.target.style.display = "none";
+
+}
