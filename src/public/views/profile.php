@@ -1,13 +1,17 @@
 <?php require 'components/head.php'; ?>
 
-<div id="profile">
-  <div id="profile-info"></div>
+<div id="profile" class="profile">
+  <header id="profile-info" class="profile-info"></header>
   <div id="profile-menu" class="profile-menu"></div>
   <div id="profile-entries-wrapper" class="container">
     <div id="profile-entries"></div>
   </div>
-  <div id="profile-comments"></div>
-  <div id="profile-likes"></div>
+  <div id="profile-comments-wrapper" class="container">
+    <div id="profile-comments" class="profile-comments"></div>
+  </div>
+  <div id="profile-likes-wrapper" class="container">
+  <div id="profile-likes" class="profile-likes"></div>
+  </div>
 </div>
 
 <script src="/scripts/api.js"></script>

@@ -1,0 +1,26 @@
+.profile{
+  width: 100%;
+}
+
+
+.profile-menu{
+  min-height: 45px;
+  width: 100%;
+  text-align: center;
+
+  button{
+    appearance: none;
+    height: 45px;
+    padding: 0 20px;
+    margin: 0 5px;
+    border: none;
+    background: white;
+    cursor: pointer;
+  }
+}
+
+
+
+.profile-hidden{
+  display: none;
+}

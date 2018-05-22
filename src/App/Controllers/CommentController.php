@@ -57,7 +57,12 @@ class CommentController{
 
   // get all comments connected to user
   public function getAllConnectedUsers($userID){
-    $getAll = $this->db->prepare("SELECT * FROM comments WHERE createdBy = :createdBy");
+    $getAll = $this->db->prepare(
+      "SELECT c.commentID, c.entryID, c.content, u.userID, u.username
+       FROM comments AS c
+       INNER JOIN users AS u
+       WHERE createdBy = :createdBy && c.createdBy = u.userID
+       GROUP BY commentID");
     $getAll->execute([
       ':createdBy' => $userID
     ]);
