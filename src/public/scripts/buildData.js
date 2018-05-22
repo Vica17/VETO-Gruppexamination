@@ -19,7 +19,27 @@ var buildData = ( function(){
       user.setAttribute("class", "user");
       user.innerHTML = "<b>" + data["username"] + " said:</b> " + data["content"];
 
-    container.appendChild(user);
+      let deleteForm = document.createElement("form");
+        deleteForm.setAttribute("action","/api/comments");
+        deleteForm.setAttribute("method","delete");
+        deleteForm.setAttribute("class","delete-btn-form");
+      let userHidden = document.createElement("input");
+        userHidden.setAttribute("type","hidden");
+        userHidden.setAttribute("name","commentID");
+        userHidden.setAttribute("value", data["commentID"]);
+
+
+      let deleteBtn = document.createElement("input");
+      deleteBtn.setAttribute("type","submit");
+      deleteBtn.setAttribute("value", "delete");
+      deleteForm.addEventListener("submit",function(e) {
+        e.preventDefault();deleteComment(e, container);
+      });
+
+    deleteForm.appendChild(user);
+    deleteForm.appendChild(deleteBtn);
+    deleteForm.appendChild(userHidden);
+    container.appendChild(deleteForm);
     return container;
   }
 
@@ -31,23 +51,27 @@ var buildData = ( function(){
     //Delete entry button
     let deleteEntryForm = document.createElement("form");
       deleteEntryForm.setAttribute("action","/entries/" +  data["entryID"] + "/entries");
-      deleteEntryForm.setAttribute("method","post");
-    let deleteButton = document.createElement("input");
-      deleteButton.setAttribute("type", "submit");
-      deleteButton.setAttribute("value", "Delete entry");
-      deleteButton.setAttribute("class", "deleteEntryButton");
+      deleteEntryForm.setAttribute("method","delete");
+      deleteEntryForm.setAttribute("class", "deleteEntryButton");
+
     let deleteButtonHidden = document.createElement("input");
       deleteButtonHidden.setAttribute("type","hidden");
       deleteButtonHidden.setAttribute("name","entryID");
       deleteButtonHidden.setAttribute("value", data["entryID"]);
+
+      let deleteButton = document.createElement("input");
+        deleteButton.setAttribute("type", "submit");
+        deleteButton.setAttribute("value", "Delete entry");
+
+        deleteEntryForm.addEventListener("submit", function(e){
+          e.preventDefault(); deleteEntry(e, newArticle);
+        });
+
+
     deleteEntryForm.appendChild(deleteButton);
     deleteEntryForm.appendChild(deleteButtonHidden);
 
     //adds delete function to delete likeButton
-    deleteEntryForm.addEventListener("submit", function(e){
-      e.preventDefault(); deleteEntry(e, commentLoadLocation);
-    });
-    
     newArticle.appendChild(deleteEntryForm);
 
     //title
@@ -100,7 +124,9 @@ var buildData = ( function(){
       likeInput.setAttribute("value","Like");
       likeInput.setAttribute("name","likeButton");
 
+
     //Starts function likePost() after pushing like button
+
     likeForm.addEventListener("submit", function(e){
       e.preventDefault(); likePost(e);
     });
