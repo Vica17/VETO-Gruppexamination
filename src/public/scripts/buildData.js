@@ -78,6 +78,12 @@ var buildData = ( function(){
       likeInput.setAttribute("value","Like");
       likeInput.setAttribute("name","likeButton");
 
+
+    // if user has liked
+      // add class
+    // else
+      // remove class
+
     likeForm.addEventListener("submit", function(e){
       e.preventDefault(); likePost(e);
     });

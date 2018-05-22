@@ -9,16 +9,18 @@ function getCookieByName(name) {
 
 
 function userID(){
-  let a = getCookieByName("userID");
-  console.log(a);
+  let a = sessionStorage.getItem("userID");
+  return a;
 }
 
 function isAdmin(){
-  let a = getCookieByName("isAdmin");
-  if(a == true){ return true; }
+  let a = sessionStorage.getItem("userID");
+  if(a == true || a == 1){ return true; }
   else { return false; }
 }
 
-
-userID();
-console.log(isAdmin());
+function isLoggedIn(){
+  let a = sessionStorage.getItem("userID");
+  if(a){ return true; }
+  else { return false; }
+}
