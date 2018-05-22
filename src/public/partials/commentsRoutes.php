@@ -28,7 +28,7 @@ $app->get('/users/{userID}/comments', function($request, $response, $args){
 
 // get all comments connected to a entry
 $app->get('/entries/{entryID}/comments', function($request, $response, $args){
-  $allComments = $this->comment->getAll($args["entryID"]);
+  $allComments = $this->comment->getAllConnectedEntryComments($args["entryID"]);
   return $response->withJson($allComments);
 });
 
@@ -36,9 +36,9 @@ $app->get('/entries/{entryID}/comments', function($request, $response, $args){
 $app->post('/comments', function ($request, $response, $args) {
   $body = $request->getParsedBody();
   $newComment = $this->comment->add(
-    $body['entryID'], $body['content'], $session['userID']
+    $body['entryID'], $body['content'], $_SESSION['userID']
   );
-  return $response->withJson(['data' => $newComment]);
+  return $response->withJson($newComment);
 });
 
 // delete a comment

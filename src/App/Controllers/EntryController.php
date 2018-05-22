@@ -18,8 +18,8 @@ class EntryController{
       FROM entries AS e
       INNER JOIN users AS u
       GROUP BY entryID
-      ORDER BY e.createdAt
-      DESC LIMIT :myLimit");
+      ORDER BY e.createdAt DESC
+      LIMIT :myLimit");
 
     $myLimit = (int)$limit;
     $getAll->bindParam('myLimit', $myLimit, \PDO::PARAM_INT);

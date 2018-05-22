@@ -19,11 +19,29 @@ async function likePost(e){
 
 }
 async function postComment(e) {
-  console.log(e.target);
+
   let data = {
     "entryID": e.target.elements["entryID"].value,
     "content": e.target.elements["content"].value
   };
 
-   api.postData("comments", data);
+  api.postData("comments", data);
+
+}
+
+
+
+async function getAllEntryComments(e, loc){
+
+  let entryID = e.target.elements["entryID"].value;
+
+  let userComments = await api.fetchData("entries/" + entryID + "/comments");
+
+  userComments.forEach(function (entry) {
+    let eachComment = buildData.comment(entry);
+    loc.appendChild(eachComment);
+  });
+
+  e.target.style.display = "none";
+
 }

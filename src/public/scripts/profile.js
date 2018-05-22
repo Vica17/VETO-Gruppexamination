@@ -12,6 +12,11 @@ async function createProfile(){
   let comments = await api.fetchData("users/" + user["userID"] + "/comments");
   let likes = await api.fetchData("users/" + user["userID"] + "/likes");
 
+  let header = document.getElementById("profile-info");
+  let name = document.createElement("h1");
+    name.innerHTML = username + "'s profile'";
+  header.appendChild(name);
+
   // if X is not empty -> print
   if(entries[0] != null){
     let container = document.getElementById("profile-entries");
@@ -20,6 +25,10 @@ async function createProfile(){
     let button = document.createElement("button");
       button.innerHTML = "All Entries";
     menu.appendChild(button);
+
+    let title = document.createElement("h2");
+      title.innerHTML = user["username"] + " posted:";
+    container.appendChild(title);
 
     // create all entries
     entries.forEach(function (entry) {
@@ -37,6 +46,10 @@ async function createProfile(){
     button.innerHTML = "All Comments";
     menu.appendChild(button);
 
+    let title = document.createElement("h2");
+      title.innerHTML = user["username"] + " commented on these posts:";
+    container.appendChild(title);
+
     // create all likes
     comments.forEach(function (comment) {
       let d = buildData.comment(comment);
@@ -52,6 +65,10 @@ async function createProfile(){
     let button = document.createElement("button");
       button.innerHTML = "All Likes";
     menu.appendChild(button);
+
+    let title = document.createElement("h2");
+      title.innerHTML = user["username"] + " liked:";
+    container.appendChild(title);
 
     // create all likes
     likes.forEach(function (like) {
