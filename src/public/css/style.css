@@ -49,9 +49,13 @@ nav {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  padding: 0.5em;
   width: auto;
   border-radius: 5px;
+  padding: 0.5em;
+  background-color: #75d1dd;
+  color: white;
+  background-color: white;
+  color: black;
   margin: 1em; }
 
 .container_login_page {
@@ -76,7 +80,15 @@ nav {
   margin-top: 1em; }
 
 .deleteEntryButton {
-  float: right; }
+  float: right;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: auto;
+  border-radius: 5px;
+  padding: 0.5em;
+  background-color: #75d1dd;
+  color: white; }
 
 .profile-comments {
   max-width: 460px;
@@ -88,6 +100,51 @@ nav {
     border-radius: 5px;
     margin-top: 1em; }
 
+.getCommentsButton {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: auto;
+  border-radius: 5px;
+  padding: 0.5em;
+  background-color: #75d1dd;
+  color: white;
+  margin-top: 1em;
+  width: 100%; }
+
+.new-comment-btn-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.user {
+  margin: 0; }
+
+.deleteCommentButton {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: auto;
+  border-radius: 5px;
+  padding: 0.5em;
+  background-color: #75d1dd;
+  color: white; }
+
+.commentArea {
+  width: 80%;
+  border-radius: 5px; }
+
+.postCommentButton {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: auto;
+  border-radius: 5px;
+  padding: 0.5em;
+  background-color: #75d1dd;
+  color: white;
+  width: 20%; }
+
 .profile-likes {
   max-width: 460px;
   width: 100%; }
@@ -97,6 +154,17 @@ nav {
     border: solid 1px lightgray;
     border-radius: 5px;
     margin-top: 1em; }
+
+.likeButton {
+  float: right;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: auto;
+  border-radius: 5px;
+  padding: 0.5em;
+  background-color: #75d1dd;
+  color: white; }
 
 .profile {
   width: 100%; }
