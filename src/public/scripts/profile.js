@@ -20,11 +20,6 @@ async function createProfile(){
   // if X is not empty -> print
   if(entries[0] != null){
     let container = document.getElementById("profile-entries");
-    let menu = document.getElementById("profile-menu");
-
-    let button = document.createElement("button");
-      button.innerHTML = "All Entries";
-    menu.appendChild(button);
 
     let title = document.createElement("h2");
       title.innerHTML = user["username"] + " posted:";
@@ -40,11 +35,6 @@ async function createProfile(){
 
   if(comments[0] != null){
     let container = document.getElementById("profile-comments");
-    let menu = document.getElementById("profile-menu");
-
-    let button = document.createElement("button");
-    button.innerHTML = "All Comments";
-    menu.appendChild(button);
 
     let title = document.createElement("h2");
       title.innerHTML = user["username"] + " commented on these posts:";
@@ -60,11 +50,6 @@ async function createProfile(){
 
   if(likes[0] != null){
     let container = document.getElementById("profile-likes");
-    let menu = document.getElementById("profile-menu");
-
-    let button = document.createElement("button");
-      button.innerHTML = "All Likes";
-    menu.appendChild(button);
 
     let title = document.createElement("h2");
       title.innerHTML = user["username"] + " liked:";
