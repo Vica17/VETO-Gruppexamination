@@ -4,6 +4,8 @@ var loginform = document.getElementById("login-form");
 var logoutform = document.getElementById("register-form");
 var logoutBtn = document.getElementById("logoutBtn");
 
+let searchEntries = document.getElementById("search-entries");
+
 
 
 if(loginform != null){
@@ -33,6 +35,10 @@ if(logoutBtn != null){
     e.preventDefault();
     logout();
   });
+}
+
+if(searchEntries != null){
+  getPostsFromSearch();
 }
 
 
@@ -101,69 +107,53 @@ async function logout(){
 
 
 async function likePost(e){
-
-  // if logged in
   if(isLoggedIn()){
-    // get data from form
     let entryID = e.target.elements["entryID"].value;
-
-    // fetch all like data from server + get userID from sessionStorage
     let question = await api.fetchData("entries/" + entryID + "/likes");
     let userID = sessionStorage.getItem("userID");
 
-    // filter data after userID
     let a = question.filter(like => like.userID == userID);
 
-    // if the result is not empty
     if(a[0] != null) {
-      // find all data and send data to route
       let data = { "entryID": entryID };
       api.deleteData("likes/" + question[0].likeID, data);
-
-      // remove class "liked" from like button
     }
-    // if the result is empty
     else {
-      // find all data and post a new like to database
       let data = { "entryID": entryID };
       api.postData("likes", data);
-
-      // add class "liked" from like button
     }
-
   }
-
-  // if user has already liked -> remove like
-  // else -> add like
-
-
-
-
 }
-async function postComment(e) {
 
+
+async function postComment(e) {
   let data = {
     "entryID": e.target.elements["entryID"].value,
     "content": e.target.elements["content"].value
   };
-
   api.postData("comments", data);
-
 }
 
 
 
 async function getAllEntryComments(e, loc){
-
   let entryID = e.target.elements["entryID"].value;
-
   let userComments = await api.fetchData("entries/" + entryID + "/comments");
-
   userComments.forEach(function (entry) {
     let eachComment = buildData.comment(entry);
     loc.appendChild(eachComment);
   });
-
   e.target.style.display = "none";
+}
 
+
+async function getPostsFromSearch() {
+  if(searchEntries != null){
+    let key = window.location.pathname.split("/").slice(-1)[0];
+    let data = await api.fetchData("entries/search/" + key);
+    data.forEach(function (d) {
+      let res = buildData.entry(d);
+      searchEntries.appendChild(res);
+    });
+  }
 }
