@@ -1,5 +1,7 @@
 <?php require 'components/head.php'; ?>
 
+<?php require 'components/nav.php'; ?>
+
 <div class="container">
   <div id="search-entries"></div>
 </div>
