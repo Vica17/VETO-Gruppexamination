@@ -1,6 +1,14 @@
-.nav-left{
-  
-}
-.nav-rigth{
+nav{
+  background-color: $accent-color;
 
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 1em;
+
+  a{
+    text-decoration: none;
+    color: white;
+    margin: 1em;
+  }
 }
