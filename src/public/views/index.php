@@ -6,6 +6,8 @@
       <h1>Welcome, <?php echo $_SESSION['username']?>!</h1>
       </header>
 
+      <?php require 'components/nav.php'; ?>
+
       <div class="container">
       <div id="entries" onload="getAllEntries()" class="entries"></div>
       <?php }

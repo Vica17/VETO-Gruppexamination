@@ -35,7 +35,7 @@ $app->get('/profile/{username}', function ($request, $response, $args) {
   return $this->view->render($response, 'profile.php');
 });
 
-$app->get('/search/{key}', function ($request, $response, $args) {
+$app->get('/search', function ($request, $response, $args) {
   return $this->view->render($response, 'search.php');
 });
 
