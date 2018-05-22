@@ -14,9 +14,7 @@
     else { ?>
       <div class="container_login_page">
         <div class="container_login_form">
-          <?php
-            require 'components/login_form.php';
-            ?>
+          <?php require 'components/login_form.php'; ?>
         </div>
         <div class="container_login_form">
           <?php

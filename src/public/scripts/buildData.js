@@ -32,8 +32,10 @@ var buildData = ( function(){
       let deleteBtn = document.createElement("input");
       deleteBtn.setAttribute("type","submit");
       deleteBtn.setAttribute("value", "delete");
+      deleteBtn.setAttribute("class", "deleteCommentButton");
+      
       deleteForm.addEventListener("submit",function(e) {
-        e.preventDefault();deleteComment(e, container);
+        e.preventDefault(); deleteComment(e, container);
       });
 
     deleteForm.appendChild(user);
@@ -52,21 +54,20 @@ var buildData = ( function(){
     let deleteEntryForm = document.createElement("form");
       deleteEntryForm.setAttribute("action","/entries/" +  data["entryID"] + "/entries");
       deleteEntryForm.setAttribute("method","delete");
-      deleteEntryForm.setAttribute("class", "deleteEntryButton");
 
     let deleteButtonHidden = document.createElement("input");
       deleteButtonHidden.setAttribute("type","hidden");
       deleteButtonHidden.setAttribute("name","entryID");
       deleteButtonHidden.setAttribute("value", data["entryID"]);
 
-      let deleteButton = document.createElement("input");
-        deleteButton.setAttribute("type", "submit");
-        deleteButton.setAttribute("value", "Delete entry");
+    let deleteButton = document.createElement("input");
+      deleteButton.setAttribute("type", "submit");
+      deleteButton.setAttribute("value", "Delete entry");
+      deleteButton.setAttribute("class", "deleteEntryButton");
 
-        deleteEntryForm.addEventListener("submit", function(e){
-          e.preventDefault(); deleteEntry(e, newArticle);
-        });
-
+    deleteEntryForm.addEventListener("submit", function(e){
+      e.preventDefault(); deleteEntry(e, newArticle);
+    });
 
     deleteEntryForm.appendChild(deleteButton);
     deleteEntryForm.appendChild(deleteButtonHidden);
@@ -77,10 +78,15 @@ var buildData = ( function(){
     //title
     let title = document.createElement("h2");
       title.setAttribute("class", "entry-title");
-    let titleInput = data["title"];
-    let titleText = document.createTextNode(titleInput);
-    title.appendChild(titleText);
+
+    let link = document.createElement("a");
+      link.setAttribute("href", "/post/" + data["entryID"]);
+      link.innerHTML = data["title"];
+
+    title.appendChild(link);
     newArticle.appendChild(title);
+
+
 
     //creator
     let creator = document.createElement("p");
@@ -106,7 +112,7 @@ var buildData = ( function(){
     content.appendChild(contentText);
     newArticle.appendChild(content);
 
-    //Like button
+    // Like button
     let likeForm = document.createElement("form");
       likeForm.setAttribute("action","/api/likes");
       likeForm.setAttribute("method","post");
@@ -123,10 +129,9 @@ var buildData = ( function(){
       likeInput.setAttribute("type","submit");
       likeInput.setAttribute("value","Like");
       likeInput.setAttribute("name","likeButton");
-
+      likeInput.setAttribute("class", "likeButton");
 
     //Starts function likePost() after pushing like button
-
     likeForm.addEventListener("submit", function(e){
       e.preventDefault(); likePost(e);
     });
@@ -135,6 +140,36 @@ var buildData = ( function(){
     likeForm.appendChild(userHidden);
     likeForm.appendChild(likeInput);
     newArticle.appendChild(likeForm);
+
+
+
+
+
+    // Edit Button
+    let editForm = document.createElement("form");
+      editForm.setAttribute("action","/edit");
+      editForm.setAttribute("method","POST");
+      editForm.setAttribute("class","edit-btn-form");
+
+    let editHidden = document.createElement("input");
+      editHidden.setAttribute("type", "hidden");
+      editHidden.setAttribute("value", data["entryID"]);
+      editHidden.setAttribute("name", "entryID");
+
+    let editInput = document.createElement("input");
+      editInput.setAttribute("type", "submit");
+      editInput.setAttribute("value", "edit");
+      editInput.setAttribute("name", "editButton");
+
+    editForm.appendChild(editHidden);
+    editForm.appendChild(editInput);
+    newArticle.appendChild(editForm);
+
+
+
+
+
+
 
     //Get all comments button
     let getAllCommentsForm = document.createElement("form");
@@ -145,6 +180,7 @@ var buildData = ( function(){
       commentButton.setAttribute("type", "submit");
       commentButton.setAttribute("value", "Show all comments");
       commentButton.setAttribute("class","all-comment-btn-form");
+      commentButton.setAttribute("class","getCommentsButton");
     let getAllCommentsHidden = document.createElement("input");
       getAllCommentsHidden.setAttribute("type","hidden");
       getAllCommentsHidden.setAttribute("name","entryID");
@@ -178,10 +214,12 @@ var buildData = ( function(){
     let commentInput = document.createElement("textarea");
       commentInput.setAttribute("type","input");
       commentInput.setAttribute("name","content");
+      commentInput.setAttribute("class", "commentArea");
     let commentInputButton = document.createElement("input");
       commentInputButton.setAttribute("type","submit");
       commentInputButton.setAttribute("value","Comment");
       commentInputButton.setAttribute("name","commentButton");
+      commentInputButton.setAttribute("class", "postCommentButton");
 
       commentForm.addEventListener("submit", function(e){
         e.preventDefault();
