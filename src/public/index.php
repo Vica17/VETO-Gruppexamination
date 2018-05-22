@@ -46,7 +46,9 @@ $app->get('/documentation', function ($request, $response, $args) {
 $app->get('/post/{postID}', function ($request, $response, $args) {
   return $this->view->render($response, 'post.php');
 });
-
+$app->get('/new', function ($request, $response, $args) {
+  return $this->view->render($response, 'post_entry.php');
+});
 
 // Login & Logout
 $app->post('/login', function ($request, $response, $args) {
