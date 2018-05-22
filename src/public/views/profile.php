@@ -1,8 +1,10 @@
 <?php require 'components/head.php'; ?>
 
+
+
 <div id="profile" class="profile">
   <header id="profile-info" class="profile-info"></header>
-  <div id="profile-menu" class="profile-menu"></div>
+  <?php require 'components/nav.php'; ?>
   <div id="profile-entries-wrapper" class="container">
     <div id="profile-entries"></div>
   </div>

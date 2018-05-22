@@ -32,7 +32,11 @@ $app->get('/', function ($request, $response, $args) {
 });
 
 $app->get('/profile/{username}', function ($request, $response, $args) {
-  return $this->view->render($response, 'profile.php', $args);
+  return $this->view->render($response, 'profile.php');
+});
+
+$app->get('/search', function ($request, $response, $args) {
+  return $this->view->render($response, 'search.php');
 });
 
 

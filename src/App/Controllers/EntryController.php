@@ -37,7 +37,14 @@ class EntryController{
   // Get entries from search of title
   public function getAllFromSearch($key){
     $wild = "%".$key."%";
-    $getOne = $this->db->prepare('SELECT * FROM entries WHERE title LIKE :key');
+    // $getOne = $this->db->prepare('SELECT * FROM entries WHERE title LIKE :key');
+    $getOne = $this->db->prepare(
+      "SELECT e.entryID, e.title, e.content, e.createdAt, u.username, u.isAdmin, u.userID
+       FROM entries AS e
+       INNER JOIN users AS u
+       WHERE title LIKE :key
+       GROUP BY entryID
+       ORDER BY e.createdAt DESC");
     $getOne->bindParam(':key', $wild);
     $getOne->execute();
     return $getOne->fetchAll();
