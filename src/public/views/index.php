@@ -11,11 +11,20 @@
       <div class="container">
       <div id="entries" onload="getAllEntries()" class="entries"></div>
       <?php }
-    else {
-      require 'components/login_form.php';
-      require 'components/register_form.php';
-    }?>
-
+    else { ?>
+      <div class="container_login_page">
+        <div class="container_login_form">
+          <?php
+            require 'components/login_form.php';
+            ?>
+        </div>
+        <div class="container_login_form">
+          <?php
+            require 'components/register_form.php';
+          ?>
+        </div>
+      </div>
+      <?php  }?>
 
   <script src="/scripts/helpers.js"></script>
   <script src="/scripts/api.js"></script>

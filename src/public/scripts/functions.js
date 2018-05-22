@@ -94,7 +94,7 @@ async function logout(){
   })
   .then( async function() {
     sessionStorage.clear();
-    location.reload();
+    location.assign("/");
   });
 }
 

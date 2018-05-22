@@ -1,4 +1,12 @@
 .logout_button{
-  padding: 2em;
-  width: auto;
+  @include button-style;
+}
+.container_login_page{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.container_login_form{
+  padding: 5em;
 }
