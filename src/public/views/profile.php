@@ -1,10 +1,13 @@
-<?php require 'components/head.php'; ?>
-
+<?php
+require 'components/head.php'; ?>
 
 
 <div id="profile" class="profile">
-  <header id="profile-info" class="profile-info"></header>
-  <?php require 'components/nav.php'; ?>
+  <header id="profile-info" class="profile-info">
+    <?php require 'components/logout_btn.php'; ?>
+  </header>
+  <?php
+  require 'components/nav.php'; ?>
   <div id="profile-entries-wrapper" class="container">
     <div id="profile-entries"></div>
   </div>

@@ -1,15 +1,18 @@
-<div class="nav">
+<nav>
+
   <div class="nav-left">
-    <li> <a href="/">Home</a> </li>
-    <li> <a href="/Documentation">Documentation</a> </li>
+    <a href="/">Home</a>
+    <a href="/Documentation">Documentation</a>
     <?php if(isLoggedIn()): ?>
-      <li> <a href="/profile/<?php echo $_SESSION['username']; ?>">Profile</a> </li>
+      <a href="/profile/<?php echo $_SESSION['username']; ?>">Profile</a>
     <?php endif; ?>
   </div>
+
   <div class="nav-right">
     <form class="" action="/search" method="GET">
       <input type="search" name="key" placeholder="search">
       <button type="submit">Submit</button>
     </form>
   </div>
-</div>
+
+</nav>
