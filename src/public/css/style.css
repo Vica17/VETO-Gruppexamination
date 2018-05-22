@@ -28,7 +28,7 @@ header {
   justify-content: center; }
 
 .logout_button {
-  height: 2em;
+  padding: 2em;
   width: auto; }
 
 .entry {
