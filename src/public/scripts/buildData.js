@@ -28,6 +28,28 @@ var buildData = ( function(){
     let newArticle = document.createElement("article");
       newArticle.setAttribute("class", "entry");
 
+    //Delete entry button
+    let deleteEntryForm = document.createElement("form");
+      deleteEntryForm.setAttribute("action","/entries/" +  data["entryID"] + "/entries");
+      deleteEntryForm.setAttribute("method","post");
+    let deleteButton = document.createElement("input");
+      deleteButton.setAttribute("type", "submit");
+      deleteButton.setAttribute("value", "Delete entry");
+      deleteButton.setAttribute("class", "deleteEntryButton");
+    let deleteButtonHidden = document.createElement("input");
+      deleteButtonHidden.setAttribute("type","hidden");
+      deleteButtonHidden.setAttribute("name","entryID");
+      deleteButtonHidden.setAttribute("value", data["entryID"]);
+    deleteEntryForm.appendChild(deleteButton);
+    deleteEntryForm.appendChild(deleteButtonHidden);
+
+    //adds delete function to delete likeButton
+    deleteEntryForm.addEventListener("submit", function(e){
+      e.preventDefault(); deleteEntry(e, commentLoadLocation);
+    });
+    
+    newArticle.appendChild(deleteEntryForm);
+
     //title
     let title = document.createElement("h2");
       title.setAttribute("class", "entry-title");
@@ -78,12 +100,7 @@ var buildData = ( function(){
       likeInput.setAttribute("value","Like");
       likeInput.setAttribute("name","likeButton");
 
-
-    // if user has liked
-      // add class
-    // else
-      // remove class
-
+    //Starts function likePost() after pushing like button
     likeForm.addEventListener("submit", function(e){
       e.preventDefault(); likePost(e);
     });
