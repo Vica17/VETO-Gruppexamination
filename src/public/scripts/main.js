@@ -26,6 +26,9 @@ async function getLikes(entryID){
 }
 
 
+
+
+
   async function getAllComments() {
     let userComments = await api.fetchData("comments");
 

@@ -70,12 +70,21 @@ var buildData = ( function(){
       likeHidden.setAttribute("type","hidden");
       likeHidden.setAttribute("name","entryID");
       likeHidden.setAttribute("value", data["entryID"]);
+    let userHidden = document.createElement("input");
+      userHidden.setAttribute("type","hidden");
+      userHidden.setAttribute("name","userID");
+      userHidden.setAttribute("value", data["userID"]);
     let likeInput = document.createElement("input");
       likeInput.setAttribute("type","submit");
       likeInput.setAttribute("value","Like");
       likeInput.setAttribute("name","likeButton");
 
+    likeForm.addEventListener("submit", function(e){
+      e.preventDefault(); likePost(e);
+    });
+
     likeForm.appendChild(likeHidden);
+    likeForm.appendChild(userHidden);
     likeForm.appendChild(likeInput);
     newArticle.appendChild(likeForm);
 
@@ -97,15 +106,26 @@ var buildData = ( function(){
       commentHidden.setAttribute("type","hidden");
       commentHidden.setAttribute("name","userID");
       commentHidden.setAttribute("value", data["userID"]);
+    let commentHidden2 = document.createElement("input");
+        commentHidden2.setAttribute("type","hidden");
+        commentHidden2.setAttribute("name","entryID");
+        commentHidden2.setAttribute("value", data["entryID"]);
     let commentInput = document.createElement("input");
       commentInput.setAttribute("type","input");
+      commentInput.setAttribute("name","content");
     let commentInputButton = document.createElement("input");
       commentInputButton.setAttribute("type","submit");
       commentInputButton.setAttribute("value","Comment");
       commentInputButton.setAttribute("name","commentButton");
 
+      commentForm.addEventListener("submit", function(e){
+        e.preventDefault();
+        postComment(e);
+      });
+
     commentForm.appendChild(commentInput);
     commentForm.appendChild(commentHidden);
+    commentForm.appendChild(commentHidden2);
     commentForm.appendChild(commentInputButton);
     newArticle.appendChild(commentForm);
 
