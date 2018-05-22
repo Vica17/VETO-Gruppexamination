@@ -1,5 +1,8 @@
 .logout_button{
   @include button-style;
+  background-color: white;
+  color:black;
+  margin: 1em;
 }
 .container_login_page{
   display: flex;
