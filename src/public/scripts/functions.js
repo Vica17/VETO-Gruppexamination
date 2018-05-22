@@ -149,7 +149,7 @@ async function getAllEntryComments(e, loc){
 
 async function getPostsFromSearch() {
   if(searchEntries != null){
-    let key = window.location.pathname.split("/").slice(-1)[0];
+    var key = getParameterByName('key');
     let data = await api.fetchData("entries/search/" + key);
     data.forEach(function (d) {
       let res = buildData.entry(d);
