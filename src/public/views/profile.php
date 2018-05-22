@@ -14,6 +14,7 @@
   </div>
 </div>
 
+<script src="/scripts/helpers.js"></script>
 <script src="/scripts/api.js"></script>
 <script src="/scripts/buildData.js"></script>
 <script src="/scripts/functions.js"></script>

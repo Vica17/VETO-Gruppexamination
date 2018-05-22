@@ -42,7 +42,7 @@ $app->post('/login', function ($request, $response, $args) {
   $res = $this->user->login($body);
 
   if($res == true){
-    return $response = $response->withRedirect('/');
+    return $response->withJson($res);
   } else {
     return $response->withJson($res);
   }

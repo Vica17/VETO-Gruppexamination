@@ -16,7 +16,7 @@ class UserController{
 
     $fetchUserStatement = $this->db->prepare('SELECT * FROM users WHERE username = :username');
     $fetchUserStatement->execute([
-        ':username' => $body['username']
+      ':username' => $body['username']
     ]);
     $user = $fetchUserStatement->fetch();
 
@@ -29,7 +29,8 @@ class UserController{
           $_SESSION["isAdmin"] = true;
         }
 
-        return true;
+        // return true;
+        return array($user["userID"], $user["isAdmin"]);
     }
     return false;
   }
@@ -52,7 +53,7 @@ class UserController{
       ":username" => $args['username'],
       ":password" => $hashed
     ]);
-    return "Success!";
+    return true;
   }
 
   // Get All users
