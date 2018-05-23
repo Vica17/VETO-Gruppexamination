@@ -9,7 +9,7 @@
 
 
     <label for="formGroupExampleInput2">Password</label>
-    <input type="text" class="form-control" name="password">
+    <input type="password" class="form-control" name="password">
 
     <button type="submit" class="btn btn-default">Submit</button>
  </form>
