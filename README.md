@@ -88,8 +88,3 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 - [x] profile - Show all data from a user
 - [x] post - show a single post
 - [x] documentation - info om projektet
-
----
-
-### Other Ideas
-- Ta bort `isAdmin`/ `isLoggedIn` middleware from App (ingen användning?) eller gör om så att den länkar till en annan route ex. `/` (home) om man inte är admin eller inloggad?
