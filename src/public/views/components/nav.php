@@ -4,8 +4,8 @@
     <a href="/">Home</a>
     <?php if(isLoggedIn()): ?>
       <a href="/profile/<?php echo $_SESSION['username']; ?>">Profile</a>
+      <a href="/new">Create New Post</a>
     <?php endif; ?>
-    <a href="/new">Create New Post</a>
     <a href="/documentation">Documentation</a>
   </div>
 

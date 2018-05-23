@@ -6,7 +6,13 @@ async function createProfile(){
   let user = await api.fetchData("users/username/" + username);
 
   // if user does not exists
-  if(user == false){ return false; }
+  if(user == false){
+    let container = document.getElementById("profile-entries");
+    let message = document.createElement("p");
+      message.innerHTML = "Sorry. Can't find a user with that name.";
+    container.appendChild(message);
+    return false;
+  }
 
   let entries = await api.fetchData("entries/user/" + user["userID"]);
   let comments = await api.fetchData("users/" + user["userID"] + "/comments");
@@ -14,7 +20,7 @@ async function createProfile(){
 
   let header = document.getElementById("profile-info");
   let name = document.createElement("h1");
-    name.innerHTML = username + "'s profile'";
+    name.innerHTML = username + "'s profile";
   header.appendChild(name);
 
   // if X is not empty -> print
@@ -42,7 +48,7 @@ async function createProfile(){
 
     // create all likes
     comments.forEach(function (comment) {
-      let d = buildData.comment(comment);
+      let d = buildData.comment(comment, true);
       container.appendChild(d);
     });
 

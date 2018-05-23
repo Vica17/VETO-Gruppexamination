@@ -13,18 +13,18 @@ function getParameterByName(name, url) {
 
 
 function userID(){
-  let a = sessionStorage.getItem("userID");
+  let a = localStorage.getItem("userID");
   return a;
 }
 
 function isAdmin(){
-  let a = sessionStorage.getItem("userID");
+  let a = localStorage.getItem("userID");
   if(a == true || a == 1){ return true; }
   else { return false; }
 }
 
 function isLoggedIn(){
-  let a = sessionStorage.getItem("userID");
+  let a = localStorage.getItem("userID");
   if(a){ return true; }
   else { return false; }
 }

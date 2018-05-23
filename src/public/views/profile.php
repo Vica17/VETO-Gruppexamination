@@ -3,20 +3,27 @@ require 'components/head.php'; ?>
 
 
 <div id="profile" class="profile">
+
   <header id="profile-info" class="profile-info">
-    <?php require 'components/logout_btn.php'; ?>
+    <?php if(isLoggedIn()){
+      require 'components/logout_btn.php';
+    } else {
+      require 'components/login_btn.php';
+    } ?>
   </header>
-  <?php
-  require 'components/nav.php'; ?>
+
+  <?php require 'components/nav.php'; ?>
+
   <div id="profile-entries-wrapper" class="container">
-    <div id="profile-entries"></div>
+    <div id="profile-entries" class="entries"></div>
   </div>
   <div id="profile-comments-wrapper" class="container">
     <div id="profile-comments" class="profile-comments"></div>
   </div>
   <div id="profile-likes-wrapper" class="container">
-  <div id="profile-likes" class="profile-likes"></div>
+    <div id="profile-likes" class="profile-likes"></div>
   </div>
+
 </div>
 
 <script src="/scripts/helpers.js"></script>
