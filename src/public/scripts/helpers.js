@@ -18,7 +18,8 @@ function userID(){
 }
 
 function isAdmin(){
-  let a = localStorage.getItem("userID");
+  let a = localStorage.getItem("isAdmin");
+  console.log(a);
   if(a == true || a == 1){ return true; }
   else { return false; }
 }

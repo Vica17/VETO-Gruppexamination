@@ -39,7 +39,7 @@ var buildData = ( function(){
 
     container.appendChild(user);
 
-    if(isLoggedIn() && data["userID"] == userID()){
+    if(isLoggedIn() && data["userID"] == userID() || isAdmin()){
       let deleteForm = document.createElement("form");
         deleteForm.setAttribute("action","/api/comments");
         deleteForm.setAttribute("method","delete");
@@ -71,7 +71,7 @@ var buildData = ( function(){
       newArticle.setAttribute("class", "entry");
 
     // Delete + Edit Button button
-    if(isLoggedIn() && data["userID"] == userID()){
+    if(isLoggedIn() && data["userID"] == userID() || isAdmin()){
       let editForm = document.createElement("form");
         editForm.setAttribute("action","/edit");
         editForm.setAttribute("method","POST");
@@ -142,7 +142,7 @@ var buildData = ( function(){
     //creator
     let creator = document.createElement("p");
       creator.setAttribute("class", "entry-creator");
-      creator.innerHTML = "Av: <a href=/profile/" + data["username"] + ">" + data["username"] + "</a> - " + data["createdAt"];
+      creator.innerHTML = "Av <a href=/profile/" + data["username"] + ">" + data["username"] + "</a> - " + data["createdAt"];
     newArticle.appendChild(creator);
 
     //date
