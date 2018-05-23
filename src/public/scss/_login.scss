@@ -1,4 +1,4 @@
-.logout_button{
+.logout_button, .login_button{
   @include button-style;
   background-color: white;
   color:black;
