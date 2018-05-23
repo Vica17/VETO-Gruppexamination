@@ -1,3 +1,3 @@
-<form action="/logout" method="GET" id="logoutBtn">
-  <input type="submit" value="Logout" class="logout_button">
+<form action="/logout" method="GET" id="logoutBtn" class="logoutBtn">
+  <input type="submit" value="Logout" class="login_button">
 </form>

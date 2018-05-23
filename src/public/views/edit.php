@@ -6,33 +6,22 @@
 <div class="container">
   <div id="entry-editform">
     <form id="edit-entry-form" class="edit-post" action="/api/entries" method="post">
-      <label for="title">Title</label>
-      <input type="text" name="title" id="title" placholder="title">
-
-      <label for="content">Content</label>
-      <textarea name="content" rows="8" id="content" cols="80"></textarea>
+      <h3>Edit this post</h3>
+      <label for="title">Title</label><br>
+      <input type="text" name="title" id="title" value="<?= $title ?>" placholder="title">
+      <br><br>
+      <label for="content">Content</label><br>
+      <textarea name="content" rows="8" id="content" cols="80"><?= $content ?></textarea>
+      <br>
       <input type="hidden" name="userID" value="<?= $_SESSION["userID"] ?>">
       <input type="hidden" name="entryID" value="<?= $entryID ?>">
 
-      <input type="submit" name="submit" value="Submit">
+      <input type="submit" name="submit" value="Submit" class="submit-btn">
     </form>
   </div>
 </div>
 
 
-
-
-<!--
-  // VAD SKA HÄNDA
-  // när man tycker på edit knappen
-    // skicka med entryID till /edit route
-    // hämta posten
-    // printa posten
-
-    // NÄR MAN TRYCKER PÅ SUBMIT
-      // JavaScript funktion som submittar
-      // tillbaka till första sidan
--->
 
 <script src="/scripts/helpers.js"></script>
 <script src="/scripts/api.js"></script>

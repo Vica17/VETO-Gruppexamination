@@ -2,7 +2,6 @@
   width: 100%;
 }
 
-
 .profile-menu{
   min-height: 45px;
   width: 100%;
@@ -19,8 +18,15 @@
   }
 }
 
+.profile-comments, .profile-likes{
+  max-width: 460px;
+  width: 100%;
 
-
-.profile-hidden{
-  display: none;
+  .comment, .like{
+    width: 100%;
+    padding: 2em;
+    border: solid 1px lightgray;
+    border-radius: 5px;
+    margin-top: 1em;
+  }
 }

@@ -24,7 +24,7 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 - `entries`
   - entryID - INT (AI)(PK)
   - title - VARCHAR(100)
-  - content - VARCHAR(100)
+  - content - TEXT
   - createdBy - INT(11)
   - createAt - DATETIME
 
@@ -32,7 +32,7 @@ Ni som grupp ska skapa ett API med hjälp av PHP-ramverket Slim och databasen My
 - `comments`
   - commentID - INT (AI)(PK)
   - entryID - INT(11)
-  - content - VARCHAR(250)
+  - content - TEXT
   - createdBy - INT(11)
   - createAt - DATETIME
 

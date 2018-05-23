@@ -2,14 +2,20 @@
   <?php
     if(isLoggedIn()){?>
       <header>
-      <?php require 'components/logout_btn.php';?>
+        <?php if(isLoggedIn()){
+          require 'components/logout_btn.php';
+        } else {
+          require 'components/login_btn.php';
+        } ?>
       <h1>Welcome, <?php echo $_SESSION['username']?>!</h1>
       </header>
 
       <?php require 'components/nav.php'; ?>
 
       <div class="container">
-      <div id="entries" onload="getAllEntries()" class="entries"></div>
+        <div id="entries" class="entries">
+          <h2>All entries</h2>
+        </div>
       <?php }
     else { ?>
       <div class="container_login_page">
