@@ -17,6 +17,7 @@ class EntryController{
       "SELECT e.entryID, e.title, e.content, e.createdAt, u.username, u.isAdmin, u.userID
       FROM entries AS e
       INNER JOIN users AS u
+      WHERE u.userID = e.createdBy AND u.userID = e.createdBy
       GROUP BY entryID
       ORDER BY e.createdAt DESC
       LIMIT :myLimit");
@@ -33,7 +34,7 @@ class EntryController{
       "SELECT e.entryID, e.title, e.content, e.createdAt, u.username, u.isAdmin, u.userID
        FROM entries AS e
        INNER JOIN users AS u
-       WHERE entryID = :entryID
+       WHERE entryID = :entryID AND u.userID = e.createdBy
        GROUP BY entryID");
     $getOne->execute([':entryID' => $entryID]);
     return $getOne->fetch();
@@ -47,7 +48,7 @@ class EntryController{
       "SELECT e.entryID, e.title, e.content, e.createdAt, u.username, u.isAdmin, u.userID
        FROM entries AS e
        INNER JOIN users AS u
-       WHERE title LIKE :key
+       WHERE title LIKE :key AND u.userID = e.createdBy
        GROUP BY entryID
        ORDER BY e.createdAt DESC");
     $getOne->bindParam(':key', $wild);
@@ -61,7 +62,7 @@ class EntryController{
       "SELECT e.entryID, e.title, e.content, e.createdAt, u.username, u.isAdmin, u.userID
        FROM entries AS e
        INNER JOIN users AS u
-       WHERE createdBy = :createdBy
+       WHERE createdBy = :createdBy AND u.userID = e.createdBy
        GROUP BY entryID
        ORDER BY e.createdAt DESC");
     $getAll->execute([

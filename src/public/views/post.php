@@ -1,9 +1,10 @@
 <?php require 'components/head.php'; ?>
-
 <?php require 'components/nav.php'; ?>
 
 <div class="container">
-  <div id="post-entry"></div>
+  <div class="entries">
+    <div id="post-entry"></div>
+  </div>
 </div>
 
 <script src="/scripts/helpers.js"></script>
